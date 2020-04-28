@@ -1,0 +1,32 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2020-04-29T00:03:28
+#
+#-------------------------------------------------
+
+QT       += \
+         core gui\
+         mqtt
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = GreenhouseSystem
+TEMPLATE = app
+
+UI_DIR += build/ui
+RCC_DIR += build/rcc
+MOC_DIR += build/moc
+INCLUDEPATH += \
+  src
+
+CONFIG += c++11
+
+SOURCES += \
+        src/main.cpp\
+        src/mainwindow.cpp
+
+HEADERS  += \
+        src/mainwindow.h
+
+FORMS    += \
+        src/mainwindow.ui
