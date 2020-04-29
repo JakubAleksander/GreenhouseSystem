@@ -33,3 +33,7 @@ HEADERS  += \
 FORMS    += \
         src/mainwindow.ui \
         src/SectionWidget/section.ui
+
+RESOURCES += \
+    resources/resources.qrc
+

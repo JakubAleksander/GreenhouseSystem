@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/bulb-off.svg</file>
+        <file>Icons/bulb.svg</file>
+    </qresource>
+</RCC>
