@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_mqttClient = new QMqttClient(this);
 
     if (m_mqttClient) {
-      m_mqttClient->setHostname("127.0.0.1");
+      m_mqttClient->setHostname("localhost");
       m_mqttClient->setPort(1883);
       m_mqttClient->setUsername("guest");
       m_mqttClient->setPassword("guest");
