@@ -36,8 +36,8 @@ void MainWindow::slotConnected()
   auto sub = m_mqttClient->subscribe(QMqttTopicFilter("/Greenhouse/data/"), 0);
 
   m_mqttClient->connect(sub, &QMqttSubscription::messageReceived, [this](const QMqttMessage &message) {
-    if (message.payload().size() == sizeof(Current_parameter)) {
-      Current_parameter param;
+    if (message.payload().size() == sizeof(Current_parameters)) {
+      Current_parameters param;
       memcpy(&param,&message.payload().data()[0],sizeof(param));
       qDebug() << Q_FUNC_INFO;
       qDebug() << "        id :" << param.id;
@@ -45,7 +45,7 @@ void MainWindow::slotConnected()
       qDebug() << "Insolation :" << param.insolation;
       qDebug() << "  Humidity :" << param.humidity;
       qDebug() << "\n";
-      //emit signalNewParamsFromGreenhouse(param);
+      emit signalNewParamsFromGreenhouse(param);
     }
   });
 }
@@ -85,4 +85,25 @@ void MainWindow::slotErrorChanged(const QMqttClient::ClientError e)
 
   qWarning() << "Error Occurred:" << e << " Client state :" << m_mqttClient->state();
   m_mqttClient->disconnectFromHost();
+}
+
+void MainWindow::on_btn_addSection_clicked()
+{
+    Parameters parameters;
+
+    SectionSettings* sectionSettings = new SectionSettings(this);
+    sectionSettings->setParameters(parameters);
+
+    if(sectionSettings->exec() == QDialog::Accepted){
+        parameters = sectionSettings->downloadParameters();
+        Section *section = new Section(parameters);
+        connect(this, &MainWindow::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+        ui->tabSections->addTab(section, parameters.section_name);
+    }
+    delete sectionSettings;
+}
+
+void MainWindow::on_btn_quit_clicked()
+{
+    QApplication::quit();
 }
