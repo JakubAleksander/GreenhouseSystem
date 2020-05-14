@@ -7,6 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    Section *section = new Section(2);
+    sections.insert(2,section);
+    setCentralWidget(section);
+
+    connect(this, &MainWindow::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+
+
     m_mqttClient = new QMqttClient(this);
 
     if (m_mqttClient) {
@@ -36,8 +43,8 @@ void MainWindow::slotConnected()
   auto sub = m_mqttClient->subscribe(QMqttTopicFilter("/Greenhouse/data/"), 0);
 
   m_mqttClient->connect(sub, &QMqttSubscription::messageReceived, [this](const QMqttMessage &message) {
-    if (message.payload().size() == sizeof(Current_parameter)) {
-      Current_parameter param;
+    if (message.payload().size() == sizeof(Current_parameters)) {
+      Current_parameters param;
       memcpy(&param,&message.payload().data()[0],sizeof(param));
       qDebug() << Q_FUNC_INFO;
       qDebug() << "        id :" << param.id;
@@ -45,7 +52,7 @@ void MainWindow::slotConnected()
       qDebug() << "Insolation :" << param.insolation;
       qDebug() << "  Humidity :" << param.humidity;
       qDebug() << "\n";
-      //emit signalNewParamsFromGreenhouse(param);
+      emit signalNewParamsFromGreenhouse(param);
     }
   });
 }

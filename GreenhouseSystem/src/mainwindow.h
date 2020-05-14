@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "SectionWidget/section.h"
 #include <QMqttClient>
+#include <QMap>
 
 namespace Ui {
 class MainWindow;
@@ -24,10 +25,15 @@ private slots:
     void slotDisconnected();
     void slotConnected();
 
+signals:
+    void signalNewParamsFromGreenhouse(Current_parameters parameters);
+
 private:
     Ui::MainWindow *ui;
 
     QMqttClient *m_mqttClient;
+    QMap<quint8, Section*>sections;
+
 };
 
 #endif // MAINWINDOW_H
