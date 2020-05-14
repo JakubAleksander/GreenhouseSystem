@@ -7,13 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Section *section = new Section(2);
-    sections.insert(2,section);
-    setCentralWidget(section);
-
-    connect(this, &MainWindow::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
-
-
     m_mqttClient = new QMqttClient(this);
 
     if (m_mqttClient) {
@@ -92,4 +85,25 @@ void MainWindow::slotErrorChanged(const QMqttClient::ClientError e)
 
   qWarning() << "Error Occurred:" << e << " Client state :" << m_mqttClient->state();
   m_mqttClient->disconnectFromHost();
+}
+
+void MainWindow::on_btn_addSection_clicked()
+{
+    Parameters parameters;
+
+    SectionSettings* sectionSettings = new SectionSettings(this);
+    sectionSettings->setParameters(parameters);
+
+    if(sectionSettings->exec() == QDialog::Accepted){
+        parameters = sectionSettings->downloadParameters();
+        Section *section = new Section(parameters);
+        connect(this, &MainWindow::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+        ui->tabSections->addTab(section, parameters.section_name);
+    }
+    delete sectionSettings;
+}
+
+void MainWindow::on_btn_quit_clicked()
+{
+    QApplication::quit();
 }

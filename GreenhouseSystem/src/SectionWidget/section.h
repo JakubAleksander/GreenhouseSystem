@@ -2,6 +2,7 @@
 #define SECTION_H
 
 #include <QWidget>
+#include "sectionsettings.h"
 
 namespace Ui {
 class Section;
@@ -22,7 +23,7 @@ class Section : public QWidget
     Q_OBJECT
 
 public:
-    explicit Section(quint8 id, QWidget *parent = 0);
+    explicit Section(Parameters& parameters, QWidget *parent = 0);
     ~Section();
 
 private slots:
@@ -33,7 +34,8 @@ public slots:
 
 private:
     Ui::Section *ui;
-    Current_parameters *current_parameter;
+    Current_parameters current_parameter;
+    Parameters parameters;
     quint8 id;
 };
 

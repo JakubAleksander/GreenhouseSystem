@@ -25,6 +25,10 @@ private slots:
     void slotDisconnected();
     void slotConnected();
 
+    void on_btn_addSection_clicked();
+
+    void on_btn_quit_clicked();
+
 signals:
     void signalNewParamsFromGreenhouse(Current_parameters parameters);
 

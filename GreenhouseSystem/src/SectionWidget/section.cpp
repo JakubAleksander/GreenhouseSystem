@@ -1,12 +1,12 @@
 #include "section.h"
 #include "ui_section.h"
 
-Section::Section(quint8 id, QWidget *parent) :
+Section::Section(Parameters& parameters, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Section), id(id)
+    ui(new Ui::Section), parameters(parameters)
 {
     ui->setupUi(this);
-    //connect(w, &MainWindow::signalNewParamsFromGreenhouse, this, &Section::setParameters);
+    current_parameter.id = parameters.sectionID;
 }
 
 Section::~Section()
@@ -16,11 +16,19 @@ Section::~Section()
 
 void Section::on_btn_settings_clicked()
 {
+    SectionSettings* sectionSettings = new SectionSettings(this);
+    sectionSettings->setParameters(parameters);
 
+    if(sectionSettings->exec() == QDialog::Accepted){
+        parameters = sectionSettings->downloadParameters();
+    }
+    delete sectionSettings;
 }
 
 void Section::setReseivedParameters(Current_parameters parameters)
 {
- ui->pb_watering->setValue(parameters.humidity);
- ui->pb_lighting->setValue(parameters.insolation);
+    if(this->parameters.sectionID == parameters.id ){
+        ui->pb_watering->setValue(parameters.humidity);
+        ui->pb_lighting->setValue(parameters.insolation);
+    }
 }
