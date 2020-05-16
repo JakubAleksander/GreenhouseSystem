@@ -9,6 +9,11 @@ Section::Section(Parameters& parameters, QWidget *parent) :
     current_parameter.id = parameters.sectionID;
 }
 
+QString Section::getSectionName()
+{
+    return parameters.section_name;
+}
+
 Section::~Section()
 {
     delete ui;
