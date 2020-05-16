@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "SectionWidget/section.h"
+//#include "SectionWidget/section.h"
 #include <QMqttClient>
 #include <QMap>
 #include "digitalclock.h"
+#include "sectionsmanager.h"
 
 namespace Ui {
 class MainWindow;

@@ -98,7 +98,7 @@ void MainWindow::on_btn_addSection_clicked()
         parameters = sectionSettings->downloadParameters();
         Section *section = new Section(parameters);
         connect(this, &MainWindow::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
-        ui->tabSections->addTab(section, parameters.section_name);
+        ui->sectionsManager->addSection(section);
     }
     delete sectionSettings;
 }

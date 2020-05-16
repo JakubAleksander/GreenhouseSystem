@@ -27,13 +27,15 @@ SOURCES += \
         src/mainwindow.cpp \
         src/SectionWidget/section.cpp \
     src/SectionWidget/sectionsettings.cpp \
-    src/digitalclock.cpp
+    src/digitalclock.cpp \
+    src/sectionsmanager.cpp
 
 HEADERS  += \
         src/mainwindow.h \
         src/SectionWidget/section.h \
     src/SectionWidget/sectionsettings.h \
-    src/digitalclock.h
+    src/digitalclock.h \
+    src/sectionsmanager.h
 
 FORMS    += \
         src/mainwindow.ui \
