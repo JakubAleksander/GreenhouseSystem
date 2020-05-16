@@ -5,6 +5,7 @@
 #include "SectionWidget/section.h"
 #include <QMqttClient>
 #include <QMap>
+#include "digitalclock.h"
 
 namespace Ui {
 class MainWindow;
