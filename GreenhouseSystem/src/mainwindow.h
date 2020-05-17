@@ -2,9 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//#include "SectionWidget/section.h"
-#include <QMqttClient>
-#include <QMap>
+
 #include "digitalclock.h"
 #include "sectionsmanager.h"
 #include "messenger.h"
@@ -23,7 +21,6 @@ public:
 
 private slots:
     void on_btn_addSection_clicked();
-
     void on_btn_quit_clicked();
 
 signals:
