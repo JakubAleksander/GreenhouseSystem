@@ -4,6 +4,7 @@
 #include <QTableWidget>
 #include <QDebug>
 #include <QMap>
+
 #include "SectionWidget/section.h"
 
 class SectionsManager : public QTabWidget

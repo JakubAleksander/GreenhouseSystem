@@ -2,6 +2,7 @@
 #define SECTION_H
 
 #include <QWidget>
+
 #include "sectionsettings.h"
 
 namespace Ui {
@@ -37,7 +38,6 @@ private:
     Ui::Section *ui;
     Current_parameters current_parameter;
     Parameters parameters;
-    quint8 id;
 };
 
 #endif // SECTION_H

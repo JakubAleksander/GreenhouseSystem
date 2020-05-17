@@ -1,7 +1,8 @@
-#ifndef MESSSENGER_H
-#define MESSSENGER_H
+#ifndef MESSENGER_H
+#define MESSENGER_H
 
 #include <QMqttClient>
+
 #include "SectionWidget/section.h"
 
 class Messenger : public QMqttClient
@@ -24,4 +25,4 @@ private:
     QMqttClient *m_mqttClient;
 };
 
-#endif // MESSSENGER_H
+#endif // MESSENGER_H

@@ -16,7 +16,6 @@ struct Parameters{
     int insolation_expected = 0;
     int time_hours = 0;
     int time_minutes = 0;
-    //int watering_time = (time_minutes+(60*(time_hours)))*60000;
 };
 
 class SectionSettings : public QDialog

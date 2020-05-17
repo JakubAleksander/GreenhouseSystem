@@ -9,7 +9,6 @@ DigitalClock::DigitalClock(QWidget *parent) : QLCDNumber(parent)
         timer->start(1000);
 
         showTime();
-
         resize(150, 60);
 }
 
