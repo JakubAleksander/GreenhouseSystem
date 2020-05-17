@@ -10,14 +10,14 @@ SectionsManager::SectionsManager(QWidget *parent) : QTabWidget(parent)
 void SectionsManager::addSection(Section *section)
 {
     addTab(section, section->getSectionName());
-    sectionsMap.insert(indexOf(section),section);
+    sectionsMap.insert(indexOf(section), section);
     qDebug() << sectionsMap.size();
 }
 
 void SectionsManager::removeSection(int index)
 {
-    delete widget(index);
     removeTab(index);
     sectionsMap.remove(index);
+    delete widget(index-1);
     qDebug() << sectionsMap.size();
 }
