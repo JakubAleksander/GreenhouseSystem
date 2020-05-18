@@ -6,59 +6,56 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1017</width>
-    <height>508</height>
+    <width>1143</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>400</y>
-      <width>241</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="btn_addSection">
-       <property name="text">
-        <string>Add section</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_quit">
-       <property name="text">
-        <string>Quit</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="DigitalClock" name="digitalClock" native="true">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>400</y>
-      <width>120</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="SectionsManager" name="sectionsManager" native="true">
     <property name="geometry">
      <rect>
       <x>29</x>
       <y>29</y>
-      <width>781</width>
-      <height>311</height>
+      <width>871</width>
+      <height>431</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>490</y>
+      <width>551</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="DigitalClock" name="digitalClock" native="true"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="btn_addSection">
+         <property name="text">
+          <string>Add section</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_quit">
+         <property name="text">
+          <string>Quit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -66,7 +63,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1017</width>
+     <width>1143</width>
      <height>20</height>
     </rect>
    </property>
