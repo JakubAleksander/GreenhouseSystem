@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QFileDialog>
 
 #include "digitalclock.h"
 #include "sectionsmanager.h"

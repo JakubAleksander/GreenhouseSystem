@@ -33,5 +33,23 @@ void MainWindow::on_btn_addSection_clicked()
 
 void MainWindow::on_btn_quit_clicked()
 {
+    QMessageBox msgBox;
+    QPushButton *cancelButton = msgBox.addButton(tr("Cancel"), QMessageBox::ActionRole);
+    QPushButton *dontSaveButton = msgBox.addButton(tr("Don't save and quit"), QMessageBox::ActionRole);
+    QPushButton *saveButton = msgBox.addButton(tr("Save and quit"), QMessageBox::ActionRole);
+    msgBox.setText("Turn off the greenhouse system?");
+    msgBox.setInformativeText("Do you want to save the current section settings?");
+    msgBox.exec();
+
+    if(msgBox.clickedButton() != cancelButton){
+        if(msgBox.clickedButton() == saveButton){
+            QString path = QFileDialog::getExistingDirectory(this, tr("Save sections settings"));
+            ui->sectionsManager->saveAllSectionsToFile(path);
+        }
     QApplication::quit();
+    }
+
+    delete cancelButton;
+    delete dontSaveButton;
+    delete saveButton;
 }

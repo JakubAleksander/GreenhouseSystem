@@ -14,6 +14,11 @@ QString Section::getSectionName()
     return parameters.section_name;
 }
 
+Parameters Section::getParameter()
+{
+    return parameters;
+}
+
 Section::~Section()
 {
     delete ui;

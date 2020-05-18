@@ -3,6 +3,7 @@
 SectionsManager::SectionsManager(QWidget *parent) : QTabWidget(parent)
 {
     setTabsClosable(true);
+    setMovable(true);
 
     connect(this, &SectionsManager::tabCloseRequested, this, &SectionsManager::removeSection);
 }
@@ -10,14 +11,23 @@ SectionsManager::SectionsManager(QWidget *parent) : QTabWidget(parent)
 void SectionsManager::addSection(Section *section)
 {
     addTab(section, section->getSectionName());
-    sectionsMap.insert(indexOf(section), section);
-    qDebug() << sectionsMap.size();
+}
+
+void SectionsManager::saveSectionToFile(QString path, Section *section)
+{
+
+}
+
+void SectionsManager::saveAllSectionsToFile(QString path)
+{
+    for(int i=this->count(); i>0; i--){
+        Section *section = qobject_cast<Section*>(widget(i));
+        saveSectionToFile(path, section);
+    }
 }
 
 void SectionsManager::removeSection(int index)
 {
+    this->widget(index)->deleteLater();
     removeTab(index);
-    sectionsMap.remove(index);
-    delete widget(index-1);
-    qDebug() << sectionsMap.size();
 }

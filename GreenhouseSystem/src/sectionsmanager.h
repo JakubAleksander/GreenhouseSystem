@@ -14,8 +14,11 @@ public:
 
     void addSection(Section *section);
 
+    void saveSectionToFile(QString path, Section *section);
+
+    void saveAllSectionsToFile(QString path);
+
 private:
-    QMap <int, Section*> sectionsMap;
 
 private slots:
     void removeSection(int index);
