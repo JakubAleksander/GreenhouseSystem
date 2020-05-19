@@ -25,6 +25,8 @@ private slots:
     void on_btn_addSection_clicked();
     void on_btn_quit_clicked();
 
+    void on_btn_loadSection_clicked();
+
 signals:
 
 private:

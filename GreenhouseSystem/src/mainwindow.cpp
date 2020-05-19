@@ -43,8 +43,7 @@ void MainWindow::on_btn_quit_clicked()
 
     if(msgBox.clickedButton() != cancelButton){
         if(msgBox.clickedButton() == saveButton){
-            QString path = QFileDialog::getExistingDirectory(this, tr("Save sections settings"));
-            ui->sectionsManager->saveAllSectionsToFile(path);
+            ui->sectionsManager->saveAllSectionsToFile("/home/jakub/Desktop");
         }
     QApplication::quit();
     }
@@ -52,4 +51,21 @@ void MainWindow::on_btn_quit_clicked()
     delete cancelButton;
     delete dontSaveButton;
     delete saveButton;
+}
+
+void MainWindow::on_btn_loadSection_clicked()
+{
+    Parameters parameters;
+    Section *section = new Section(parameters);
+
+    QString filename = QFileDialog::getOpenFileName(this, tr("Choose section file"), tr("Image files(*.section)"));
+    if(!(ui->sectionsManager->loadSection(filename, section))){
+        QMessageBox msgBox;
+        msgBox.setText("Can't load section");
+        msgBox.setInformativeText("Section path:  " + filename);
+        msgBox.exec();
+        return;
+    }
+    connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+    ui->sectionsManager->addSection(section);
 }

@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -43,6 +43,13 @@
         <widget class="QPushButton" name="btn_addSection">
          <property name="text">
           <string>Add section</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_loadSection">
+         <property name="text">
+          <string>Load section</string>
          </property>
         </widget>
        </item>

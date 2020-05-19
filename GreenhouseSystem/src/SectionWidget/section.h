@@ -25,8 +25,13 @@ class Section : public QWidget
 
 public:
     explicit Section(Parameters& parameters, QWidget *parent = 0);
-    QString getSectionName();
-    Parameters getParameter();
+
+    QString getSectionName(){return parameters.section_name;}
+
+    Parameters getParameters(){return parameters;}
+
+    void loadParameters(Parameters& p){parameters = p;}
+
     ~Section();
 
 private slots:
