@@ -26,6 +26,7 @@ public:
     explicit SectionSettings(QWidget *parent = 0);
 
     void setParameters(const Parameters &parameters);
+
     Parameters downloadParameters() const;
 
     ~SectionSettings();

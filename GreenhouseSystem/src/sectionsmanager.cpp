@@ -13,16 +13,48 @@ void SectionsManager::addSection(Section *section)
     addTab(section, section->getSectionName());
 }
 
+bool SectionsManager::loadSection(QString path, Section *section)
+{
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly)){
+        return false;
+    }
+    Parameters parameters;
+
+    QDataStream readStream(&file);
+    readStream >> parameters;
+
+    section->loadParameters(parameters);
+    return true;
+}
+
 void SectionsManager::saveSectionToFile(QString path, Section *section)
 {
+    Parameters parameters = section->getParameters();
 
+    if(path.back() != '/') path.push_back('/');
+    QString filename(path + parameters.section_name + ".section");
+
+    QFile file(filename);
+    if(!file.open(QFile::WriteOnly)){
+        QMessageBox msgBox;
+        msgBox.setText("Can't open file to save");
+        msgBox.setInformativeText("File path:  " + filename);
+        msgBox.exec();
+        return;
+    }
+    QDataStream writeStream(&file);
+    writeStream << parameters;
+
+    file.close();
 }
 
 void SectionsManager::saveAllSectionsToFile(QString path)
 {
-    for(int i=this->count(); i>0; i--){
-        Section *section = qobject_cast<Section*>(widget(i));
-        saveSectionToFile(path, section);
+    for(int i=0; i<=this->count(); i++){
+        if(Section *section = qobject_cast<Section*>(widget(i))){
+            saveSectionToFile(path, section);
+        }
     }
 }
 
