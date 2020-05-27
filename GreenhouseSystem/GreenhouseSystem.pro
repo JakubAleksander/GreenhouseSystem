@@ -20,7 +20,8 @@ MOC_DIR += build/moc
 INCLUDEPATH += \
   src
 
-CONFIG += c++11
+CONFIG += c++11\
+          debug
 
 SOURCES += \
         src/main.cpp\

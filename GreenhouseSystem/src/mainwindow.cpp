@@ -7,7 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setCentralWidget(ui->sectionsManager);
+
     messenger = new Messenger();
+
+    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(closeApp()));
+    connect(ui->actionLoadSection, SIGNAL(triggered()), this, SLOT(loadSection()));
+    connect(ui->actionAddSection, SIGNAL(triggered()), this, SLOT(addSection()));
 }
 
 MainWindow::~MainWindow()
@@ -15,7 +21,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btn_addSection_clicked()
+void MainWindow::addSection()
 {
     Parameters parameters;
 
@@ -31,7 +37,7 @@ void MainWindow::on_btn_addSection_clicked()
     delete sectionSettings;
 }
 
-void MainWindow::on_btn_quit_clicked()
+void MainWindow::closeApp()
 {
     QMessageBox msgBox;
     QPushButton *cancelButton = msgBox.addButton(tr("Cancel"), QMessageBox::ActionRole);
@@ -53,12 +59,13 @@ void MainWindow::on_btn_quit_clicked()
     delete saveButton;
 }
 
-void MainWindow::on_btn_loadSection_clicked()
+void MainWindow::loadSection()
 {
+    QString filename = QFileDialog::getOpenFileName(this, tr("Choose section file"), tr("Image files(*.section)"));
+    if(filename == "") return;
+
     Parameters parameters;
     Section *section = new Section(parameters);
-
-    QString filename = QFileDialog::getOpenFileName(this, tr("Choose section file"), tr("Image files(*.section)"));
     if(!(ui->sectionsManager->loadSection(filename, section))){
         QMessageBox msgBox;
         msgBox.setText("Can't load section");
@@ -69,3 +76,4 @@ void MainWindow::on_btn_loadSection_clicked()
     connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
     ui->sectionsManager->addSection(section);
 }
+

@@ -2,5 +2,13 @@
     <qresource prefix="/">
         <file>Icons/bulb-off.svg</file>
         <file>Icons/bulb.svg</file>
+        <file>Icons/new-section.svg</file>
+        <file>Icons/power.svg</file>
+        <file>Icons/settings.svg</file>
+        <file>Icons/temperature.svg</file>
+        <file>Icons/droplet.svg</file>
+        <file>Icons/refresh.svg</file>
+        <file>Icons/file-plus.svg</file>
+        <file>Icons/notes.svg</file>
     </qresource>
 </RCC>

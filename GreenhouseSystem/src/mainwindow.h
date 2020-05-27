@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QPushButton>
 
 #include "digitalclock.h"
 #include "sectionsmanager.h"
@@ -22,10 +23,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_btn_addSection_clicked();
-    void on_btn_quit_clicked();
-
-    void on_btn_loadSection_clicked();
+    void addSection();
+    void closeApp();
+    void loadSection();
 
 signals:
 
