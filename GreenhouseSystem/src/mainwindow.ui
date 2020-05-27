@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1143</width>
-    <height>614</height>
+    <width>800</width>
+    <height>480</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,52 +29,12 @@
    <widget class="SectionsManager" name="sectionsManager" native="true">
     <property name="geometry">
      <rect>
-      <x>29</x>
-      <y>29</y>
-      <width>871</width>
-      <height>431</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
       <x>40</x>
-      <y>490</y>
-      <width>551</width>
-      <height>27</height>
+      <y>20</y>
+      <width>651</width>
+      <height>341</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="DigitalClock" name="digitalClock" native="true"/>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QPushButton" name="btn_addSection">
-         <property name="text">
-          <string>Add section</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_loadSection">
-         <property name="text">
-          <string>Load section</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_quit">
-         <property name="text">
-          <string>Quit</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -70,29 +42,83 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1143</width>
+     <width>800</width>
      <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
+    <enum>LeftToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionAddSection"/>
+   <addaction name="actionLoadSection"/>
+   <addaction name="actionSettings"/>
+   <addaction name="actionGetRaport"/>
+   <addaction name="actionReloadConnection"/>
+   <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/Icons/power.svg</normaloff>:/Icons/power.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAddSection">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/Icons/new-section.svg</normaloff>:/Icons/new-section.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Section</string>
+   </property>
+  </action>
+  <action name="actionLoadSection">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/Icons/file-plus.svg</normaloff>:/Icons/file-plus.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Load Section</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/Icons/settings.svg</normaloff>:/Icons/settings.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionGetRaport">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/Icons/notes.svg</normaloff>:/Icons/notes.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Get Raport</string>
+   </property>
+  </action>
+  <action name="actionReloadConnection">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/Icons/refresh.svg</normaloff>:/Icons/refresh.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Reload Connection</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>DigitalClock</class>
-   <extends>QWidget</extends>
-   <header>digitalclock.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>SectionsManager</class>
    <extends>QWidget</extends>
@@ -100,6 +126,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
