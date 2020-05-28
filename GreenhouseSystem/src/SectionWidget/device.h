@@ -3,9 +3,9 @@
 
 #include <QObject>
 
-class Device
+class Device : public QObject
 {
-
+    Q_OBJECT
 public:
     Device(quint8 id, bool status, QString topic)
         : id(id), status(status), topic(topic){}
@@ -19,7 +19,7 @@ public:
     void changeStatus();
 
 signals:
-    void statusChanged(bool status);
+    void statusChanged(QString str_status);
 
 private:
     quint8 id;
