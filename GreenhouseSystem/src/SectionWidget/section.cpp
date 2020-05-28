@@ -11,6 +11,10 @@ Section::Section(Parameters& parameters, QWidget *parent) :
     pump = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/pump/");
     light = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/light/");
     fan = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/fan/");
+
+    connect(pump, &Device::statusChanged, ui->lbl_pumpStatus, &QLabel::setText);
+    connect(light, &Device::statusChanged, ui->lbl_lightStatus, &QLabel::setText);
+    connect(fan, &Device::statusChanged, ui->lbl_fanStatus, &QLabel::setText);
 }
 
 Section::~Section()
