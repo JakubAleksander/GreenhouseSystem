@@ -45,6 +45,12 @@ void Messenger::slotConnected()
   });
 }
 
+void Messenger::sendMsgToDevice(QString topic, bool state)
+{
+    QString message = state? "OFF":"ON";
+    m_mqttClient->publish(QMqttTopicName(topic), message.toUtf8());
+}
+
 void Messenger::slotDisconnected()
 {
   qDebug() << Q_FUNC_INFO;
@@ -81,4 +87,3 @@ void Messenger::slotErrorChanged(const QMqttClient::ClientError e)
   qWarning() << "Error Occurred:" << e << " Client state :" << m_mqttClient->state();
   m_mqttClient->disconnectFromHost();
 }
-

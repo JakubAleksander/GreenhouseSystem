@@ -10,6 +10,7 @@ class Messenger : public QMqttClient
     Q_OBJECT
 public:
     Messenger(QObject *parent = nullptr);
+
     ~Messenger();
 
 private slots:
@@ -17,6 +18,9 @@ private slots:
     void slotStateChanged();
     void slotDisconnected();
     void slotConnected();
+
+public slots:
+    void sendMsgToDevice(QString topic, bool state);
 
 signals:
     void signalNewParamsFromGreenhouse(Current_parameters parameters);

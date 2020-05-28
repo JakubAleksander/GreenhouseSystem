@@ -32,6 +32,7 @@ void MainWindow::addSection()
         parameters = sectionSettings->downloadParameters();
         Section *section = new Section(parameters);
         connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+        connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
         ui->sectionsManager->addSection(section);
     }
     delete sectionSettings;
@@ -74,6 +75,7 @@ void MainWindow::loadSection()
         return;
     }
     connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+    connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
     ui->sectionsManager->addSection(section);
 }
 

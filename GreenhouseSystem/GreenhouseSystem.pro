@@ -30,7 +30,8 @@ SOURCES += \
     src/SectionWidget/sectionsettings.cpp \
     src/digitalclock.cpp \
     src/sectionsmanager.cpp \
-    src/messenger.cpp
+    src/messenger.cpp \
+    src/SectionWidget/device.cpp
 
 HEADERS  += \
         src/mainwindow.h \
@@ -38,7 +39,8 @@ HEADERS  += \
     src/SectionWidget/sectionsettings.h \
     src/digitalclock.h \
     src/sectionsmanager.h \
-    src/messenger.h
+    src/messenger.h \
+    src/SectionWidget/device.h
 
 FORMS    += \
         src/mainwindow.ui \
