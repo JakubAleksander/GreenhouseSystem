@@ -7,11 +7,22 @@ Section::Section(Parameters& parameters, QWidget *parent) :
 {
     ui->setupUi(this);
     current_parameter.id = parameters.sectionID;
+
+    pump = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/pump/");
+    light = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/light/");
+    fan = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/fan/");
+
+    connect(pump, &Device::statusChanged, ui->lbl_pumpStatus, &QLabel::setText);
+    connect(light, &Device::statusChanged, ui->lbl_lightStatus, &QLabel::setText);
+    connect(fan, &Device::statusChanged, ui->lbl_fanStatus, &QLabel::setText);
 }
 
 Section::~Section()
 {
     delete ui;
+    delete pump;
+    delete light;
+    delete fan;
 }
 
 void Section::on_btn_settings_clicked()
@@ -21,6 +32,7 @@ void Section::on_btn_settings_clicked()
 
     if(sectionSettings->exec() == QDialog::Accepted){
         parameters = sectionSettings->downloadParameters();
+        setTopicsForNewID(parameters.sectionID);
     }
     delete sectionSettings;
 }
@@ -31,4 +43,17 @@ void Section::setReseivedParameters(Current_parameters parameters)
         ui->pb_watering->setValue(parameters.humidity);
         ui->pb_lighting->setValue(parameters.insolation);
     }
+}
+
+void Section::setTopicsForNewID(quint8 ID)
+{
+    pump->setTopic("/Section" + QString::number(ID) + "/pump/");
+    light->setTopic("/Section" + QString::number(ID) + "/light/");
+    fan->setTopic("/Section" + QString::number(ID) + "/fan/");
+}
+
+void Section::on_btn_watering_clicked()
+{
+    emit requestSwitchDevice(pump->getTopic(), !pump->actualStatus());
+    pump->changeStatus();
 }

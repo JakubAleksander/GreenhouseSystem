@@ -2,8 +2,10 @@
 #define SECTION_H
 
 #include <QWidget>
+#include <QString>
 
 #include "sectionsettings.h"
+#include "device.h"
 
 namespace Ui {
 class Section;
@@ -37,13 +39,23 @@ public:
 private slots:
     void on_btn_settings_clicked();
 
+    void on_btn_watering_clicked();
+
 public slots:
     void setReseivedParameters(Current_parameters parameters);
+
+signals:
+    void requestSwitchDevice(QString topic, bool state);
 
 private:
     Ui::Section *ui;
     Current_parameters current_parameter;
     Parameters parameters;
+    Device *pump;
+    Device *light;
+    Device *fan;
+
+    void setTopicsForNewID(quint8 ID);
 };
 
 #endif // SECTION_H
