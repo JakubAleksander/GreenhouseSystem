@@ -41,6 +41,8 @@ private slots:
 
     void on_btn_watering_clicked();
 
+    void on_btn_lighting_clicked();
+
 public slots:
     void setReseivedParameters(Current_parameters parameters);
 

@@ -57,3 +57,9 @@ void Section::on_btn_watering_clicked()
     emit requestSwitchDevice(pump->getTopic(), !pump->actualStatus());
     pump->changeStatus();
 }
+
+void Section::on_btn_lighting_clicked()
+{
+    emit requestSwitchDevice(light->getTopic(), !light->actualStatus());
+    light->changeStatus();
+}
