@@ -6,6 +6,8 @@ Section::Section(Parameters& parameters, QWidget *parent) :
     ui(new Ui::Section), parameters(parameters)
 {
     ui->setupUi(this);
+    configUI();
+
     current_parameter.id = parameters.sectionID;
 
     pump = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/pump/");
@@ -52,14 +54,50 @@ void Section::setTopicsForNewID(quint8 ID)
     fan->setTopic("/Section" + QString::number(ID) + "/fan/");
 }
 
-void Section::on_btn_watering_clicked()
+void Section::configUI()
 {
-    emit requestSwitchDevice(pump->getTopic(), !pump->actualStatus());
-    pump->changeStatus();
+    ui->btn_lighting->setIcon(QIcon(":/Icons/bulb-off.svg"));
+    ui->btn_lighting->setCheckable(true);
+
+    ui->btn_watering->setIcon(QIcon(":/Icons/droplet.svg"));
+    ui->btn_watering->setCheckable(true);
+
+    ui->btn_fan->setIcon(QIcon(":/Icons/file-plus.svg"));
+    ui->btn_fan->setCheckable(true);
 }
 
-void Section::on_btn_lighting_clicked()
+void Section::on_btn_lighting_toggled(bool checked)
 {
+    if(checked){
+        ui->btn_lighting->setIcon(QIcon(":/Icons/bulb.svg"));
+    }else{
+        ui->btn_lighting->setIcon(QIcon(":/Icons/bulb-off.svg"));
+    }
+
+    light->changeStatus(checked);
     emit requestSwitchDevice(light->getTopic(), !light->actualStatus());
-    light->changeStatus();
+}
+
+void Section::on_btn_watering_toggled(bool checked)
+{
+    if(checked){
+        ui->btn_watering->setIcon(QIcon(":/Icons/power.svg"));
+    }else{
+        ui->btn_watering->setIcon(QIcon(":/Icons/droplet.svg"));
+    }
+
+    pump->changeStatus(checked);
+    emit requestSwitchDevice(pump->getTopic(), !pump->actualStatus());
+}
+
+void Section::on_btn_fan_toggled(bool checked)
+{
+    if(checked){
+        ui->btn_fan->setIcon(QIcon(":/Icons/power.svg"));
+    }else{
+        ui->btn_fan->setIcon(QIcon(":/Icons/droplet.svg"));
+    }
+
+    fan->changeStatus(checked);
+    emit requestSwitchDevice(fan->getTopic(), !fan->actualStatus());
 }

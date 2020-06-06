@@ -39,9 +39,11 @@ public:
 private slots:
     void on_btn_settings_clicked();
 
-    void on_btn_watering_clicked();
+    void on_btn_lighting_toggled(bool checked);
 
-    void on_btn_lighting_clicked();
+    void on_btn_watering_toggled(bool checked);
+
+    void on_btn_fan_toggled(bool checked);
 
 public slots:
     void setReseivedParameters(Current_parameters parameters);
@@ -58,6 +60,7 @@ private:
     Device *fan;
 
     void setTopicsForNewID(quint8 ID);
+    void configUI();
 };
 
 #endif // SECTION_H
