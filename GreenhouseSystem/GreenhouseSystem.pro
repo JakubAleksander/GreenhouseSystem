@@ -18,7 +18,7 @@ UI_DIR += build/ui
 RCC_DIR += build/rcc
 MOC_DIR += build/moc
 INCLUDEPATH += \
-  src
+        src
 
 CONFIG += c++11\
           debug
@@ -27,26 +27,26 @@ SOURCES += \
         src/main.cpp\
         src/mainwindow.cpp \
         src/SectionWidget/section.cpp \
-    src/SectionWidget/sectionsettings.cpp \
-    src/digitalclock.cpp \
-    src/sectionsmanager.cpp \
-    src/messenger.cpp \
-    src/SectionWidget/device.cpp
+        src/SectionWidget/sectionsettings.cpp \
+        src/digitalclock.cpp \
+        src/sectionsmanager.cpp \
+        src/messenger.cpp \
+        src/SectionWidget/device.cpp
 
 HEADERS  += \
         src/mainwindow.h \
         src/SectionWidget/section.h \
-    src/SectionWidget/sectionsettings.h \
-    src/digitalclock.h \
-    src/sectionsmanager.h \
-    src/messenger.h \
-    src/SectionWidget/device.h
+        src/SectionWidget/sectionsettings.h \
+        src/digitalclock.h \
+        src/sectionsmanager.h \
+        src/messenger.h \
+        src/SectionWidget/device.h
 
 FORMS    += \
         src/mainwindow.ui \
         src/SectionWidget/section.ui \
-    src/SectionWidget/sectionsettings.ui
+        src/SectionWidget/sectionsettings.ui
 
 RESOURCES += \
-    resources/resources.qrc
+        resources/resources.qrc
 

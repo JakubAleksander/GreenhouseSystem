@@ -16,7 +16,7 @@ public:
 
     void setTopic(QString new_topic);
 
-    void changeStatus();
+    void changeStatus(const bool new_status);
 
 signals:
     void statusChanged(QString str_status);

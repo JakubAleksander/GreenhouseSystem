@@ -10,5 +10,7 @@
         <file>Icons/refresh.svg</file>
         <file>Icons/file-plus.svg</file>
         <file>Icons/notes.svg</file>
+        <file>Icons/trash.svg</file>
+        <file>Icons/brightness-up.svg</file>
     </qresource>
 </RCC>
