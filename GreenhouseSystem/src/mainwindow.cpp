@@ -31,7 +31,7 @@ void MainWindow::addSection()
     if(sectionSettings->exec() == QDialog::Accepted){
         parameters = sectionSettings->downloadParameters();
         Section *section = new Section(parameters);
-        connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+        connect(SMessenger::instance(), SIGNAL(signalNewParamsFromGreenhouse()), section, SLOT(setReseivedParameters()));
         connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
         ui->sectionsManager->addSection(section);
     }
@@ -74,7 +74,8 @@ void MainWindow::loadSection()
         msgBox.exec();
         return;
     }
-    connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+    //connect(SMessenger::instance(), &SMessenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
+    connect(SMessenger::instance(), SIGNAL(signalNewParamsFromGreenhouse()), section, SLOT(setReseivedParameters()));
     connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
     ui->sectionsManager->addSection(section);
 }
