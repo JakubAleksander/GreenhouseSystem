@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setCentralWidget(ui->sectionsManager);
+    SMessenger::createInstance();
 
     messenger = new Messenger();
 

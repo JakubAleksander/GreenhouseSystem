@@ -35,10 +35,12 @@ class SMessenger : public QMqttClient
 {
     Q_OBJECT
 public:
+    static void createInstance(){
+        if(instance_ == nullptr) instance_= new SMessenger();
+    }
+
     static SMessenger* instance(){
-        if(!instance_) instance_ = new SMessenger();
-        assert(instance_ != NULL);
-        return instance_;
+        if (instance_ != nullptr) return instance_;
     }
 public slots:
     void sendMsgToDevice(QString topic, bool state);
