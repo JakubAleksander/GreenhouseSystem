@@ -10,8 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(ui->sectionsManager);
     SMessenger::createInstance();
 
-    messenger = new Messenger();
-
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(closeApp()));
     connect(ui->actionLoadSection, SIGNAL(triggered()), this, SLOT(loadSection()));
     connect(ui->actionAddSection, SIGNAL(triggered()), this, SLOT(addSection()));
@@ -32,8 +30,7 @@ void MainWindow::addSection()
     if(sectionSettings->exec() == QDialog::Accepted){
         parameters = sectionSettings->downloadParameters();
         Section *section = new Section(parameters);
-        connect(SMessenger::instance(), SIGNAL(signalNewParamsFromGreenhouse()), section, SLOT(setReseivedParameters()));
-        connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
+        //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
         ui->sectionsManager->addSection(section);
     }
     delete sectionSettings;
@@ -75,9 +72,7 @@ void MainWindow::loadSection()
         msgBox.exec();
         return;
     }
-    //connect(SMessenger::instance(), &SMessenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
-    connect(SMessenger::instance(), SIGNAL(signalNewParamsFromGreenhouse()), section, SLOT(setReseivedParameters()));
-    connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
+    //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
     ui->sectionsManager->addSection(section);
 }
 

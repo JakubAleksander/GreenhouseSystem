@@ -1,5 +1,6 @@
 #include "section.h"
 #include "ui_section.h"
+#include "messenger.h"
 
 Section::Section(Parameters& parameters, QWidget *parent) :
     QWidget(parent),
@@ -17,6 +18,8 @@ Section::Section(Parameters& parameters, QWidget *parent) :
     connect(pump, &Device::statusChanged, ui->lbl_pumpStatus, &QLabel::setText);
     connect(light, &Device::statusChanged, ui->lbl_lightStatus, &QLabel::setText);
     connect(fan, &Device::statusChanged, ui->lbl_fanStatus, &QLabel::setText);
+
+    connect(SMessenger::instance(), &SMessenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedParameters);
 }
 
 Section::~Section()
