@@ -9,9 +9,24 @@ class Messenger : public QMqttClient
 {
     Q_OBJECT
 public:
+    static void createInstance(){
+        if(instance_ == nullptr) instance_= new Messenger();
+    }
+
+    static Messenger* instance(){
+        if(instance_ == nullptr) createInstance();
+        return instance_;
+    }
+
+public slots:
+    void sendMessage(QString topic, QString message);
+
+protected:
     Messenger(QObject *parent = nullptr);
 
-    ~Messenger();
+private:
+    static Messenger* instance_;
+    QMqttClient *m_mqttClient;
 
 private slots:
     void slotErrorChanged(const QMqttClient::ClientError e);
@@ -19,14 +34,8 @@ private slots:
     void slotDisconnected();
     void slotConnected();
 
-public slots:
-    void sendMsgToDevice(QString topic, bool state);
-
 signals:
     void signalNewParamsFromGreenhouse(Current_parameters parameters);
-
-private:
-    QMqttClient *m_mqttClient;
 };
 
 #endif // MESSENGER_H

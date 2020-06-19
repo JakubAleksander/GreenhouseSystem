@@ -8,8 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setCentralWidget(ui->sectionsManager);
-
-    messenger = new Messenger();
+    Messenger::createInstance();
 
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(closeApp()));
     connect(ui->actionLoadSection, SIGNAL(triggered()), this, SLOT(loadSection()));
@@ -31,8 +30,7 @@ void MainWindow::addSection()
     if(sectionSettings->exec() == QDialog::Accepted){
         parameters = sectionSettings->downloadParameters();
         Section *section = new Section(parameters);
-        connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
-        connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
+        //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
         ui->sectionsManager->addSection(section);
     }
     delete sectionSettings;
@@ -74,8 +72,7 @@ void MainWindow::loadSection()
         msgBox.exec();
         return;
     }
-    connect(messenger, &Messenger::signalNewParamsFromGreenhouse, section, &Section::setReseivedParameters);
-    connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
+    //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
     ui->sectionsManager->addSection(section);
 }
 

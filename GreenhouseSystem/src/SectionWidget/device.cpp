@@ -1,11 +1,22 @@
 #include "device.h"
+#include "messenger.h"
 
 void Device::setTopic(QString new_topic){
     topic = new_topic;
 }
 
-void Device::changeStatus(const bool new_status){
-    status = new_status;
-    QString str_status = status? "ON":"OFF";
-    emit statusChanged(str_status);
+void Device::switchOn()
+{
+    QString message = "ON";
+    Messenger::instance()->sendMessage(topic, message);
+    status = true;
+    emit statusChanged(QString("ON"));
+}
+
+void Device::switchOff()
+{
+    QString message = "OFF";
+    Messenger::instance()->sendMessage(topic, message);
+    status = false;
+    emit statusChanged(QString("OFF"));
 }

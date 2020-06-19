@@ -11,12 +11,10 @@ public:
         : id(id), status(status), topic(topic){}
 
     bool actualStatus(){return status;}
-
     QString getTopic(){return topic;}
-
     void setTopic(QString new_topic);
-
-    void changeStatus(const bool new_status);
+    void switchOn();
+    void switchOff();
 
 signals:
     void statusChanged(QString str_status);

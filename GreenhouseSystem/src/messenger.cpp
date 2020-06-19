@@ -1,6 +1,6 @@
 #include "messenger.h"
 
-Messenger::Messenger(QObject *parent): QMqttClient(parent)
+Messenger::Messenger(QObject *parent) : QMqttClient(parent)
 {
     m_mqttClient = new QMqttClient();
 
@@ -17,11 +17,6 @@ Messenger::Messenger(QObject *parent): QMqttClient(parent)
 
       m_mqttClient->connectToHost();
     }
-}
-
-Messenger::~Messenger()
-{
-    delete m_mqttClient;
 }
 
 void Messenger::slotConnected()
@@ -45,9 +40,8 @@ void Messenger::slotConnected()
   });
 }
 
-void Messenger::sendMsgToDevice(QString topic, bool state)
+void Messenger::sendMessage(QString topic, QString message)
 {
-    QString message = state? "OFF":"ON";
     m_mqttClient->publish(QMqttTopicName(topic), message.toUtf8());
 }
 
@@ -87,3 +81,5 @@ void Messenger::slotErrorChanged(const QMqttClient::ClientError e)
   qWarning() << "Error Occurred:" << e << " Client state :" << m_mqttClient->state();
   m_mqttClient->disconnectFromHost();
 }
+
+Messenger* Messenger::instance_ = nullptr;
