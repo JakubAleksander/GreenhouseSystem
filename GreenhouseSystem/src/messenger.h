@@ -5,15 +5,15 @@
 
 #include "SectionWidget/section.h"
 
-class SMessenger : public QMqttClient
+class Messenger : public QMqttClient
 {
     Q_OBJECT
 public:
     static void createInstance(){
-        if(instance_ == nullptr) instance_= new SMessenger();
+        if(instance_ == nullptr) instance_= new Messenger();
     }
 
-    static SMessenger* instance(){
+    static Messenger* instance(){
         if(instance_ == nullptr) createInstance();
         return instance_;
     }
@@ -22,10 +22,10 @@ public slots:
     void sendMessage(QString topic, QString message);
 
 protected:
-    SMessenger(QObject *parent = nullptr);
+    Messenger(QObject *parent = nullptr);
 
 private:
-    static SMessenger* instance_;
+    static Messenger* instance_;
     QMqttClient *m_mqttClient;
 
 private slots:

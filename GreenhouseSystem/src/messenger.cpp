@@ -1,6 +1,6 @@
 #include "messenger.h"
 
-SMessenger::SMessenger(QObject *parent) : QMqttClient(parent)
+Messenger::Messenger(QObject *parent) : QMqttClient(parent)
 {
     m_mqttClient = new QMqttClient();
 
@@ -10,16 +10,16 @@ SMessenger::SMessenger(QObject *parent) : QMqttClient(parent)
       m_mqttClient->setUsername("guest");
       m_mqttClient->setPassword("guest");
 
-      connect(m_mqttClient, &QMqttClient::stateChanged, this, &SMessenger::slotStateChanged);
-      connect(m_mqttClient, &QMqttClient::disconnected, this, &SMessenger::slotDisconnected);
-      connect(m_mqttClient, &QMqttClient::connected, this, &SMessenger::slotConnected);
-      connect(m_mqttClient, &QMqttClient::errorChanged, this, &SMessenger::slotErrorChanged);
+      connect(m_mqttClient, &QMqttClient::stateChanged, this, &Messenger::slotStateChanged);
+      connect(m_mqttClient, &QMqttClient::disconnected, this, &Messenger::slotDisconnected);
+      connect(m_mqttClient, &QMqttClient::connected, this, &Messenger::slotConnected);
+      connect(m_mqttClient, &QMqttClient::errorChanged, this, &Messenger::slotErrorChanged);
 
       m_mqttClient->connectToHost();
     }
 }
 
-void SMessenger::slotConnected()
+void Messenger::slotConnected()
 {
   qDebug() << Q_FUNC_INFO;
 
@@ -40,17 +40,17 @@ void SMessenger::slotConnected()
   });
 }
 
-void SMessenger::sendMessage(QString topic, QString message)
+void Messenger::sendMessage(QString topic, QString message)
 {
     m_mqttClient->publish(QMqttTopicName(topic), message.toUtf8());
 }
 
-void SMessenger::slotDisconnected()
+void Messenger::slotDisconnected()
 {
   qDebug() << Q_FUNC_INFO;
 }
 
-void SMessenger::slotStateChanged()
+void Messenger::slotStateChanged()
 {
   const QString content = QDateTime::currentDateTime().toString()
       + QLatin1String(": State Change : ")
@@ -58,7 +58,7 @@ void SMessenger::slotStateChanged()
   qDebug() << Q_FUNC_INFO << content;
 }
 
-void SMessenger::slotErrorChanged(const QMqttClient::ClientError e)
+void Messenger::slotErrorChanged(const QMqttClient::ClientError e)
 {
   if (e == QMqttClient::NoError) {
     return;
@@ -82,4 +82,4 @@ void SMessenger::slotErrorChanged(const QMqttClient::ClientError e)
   m_mqttClient->disconnectFromHost();
 }
 
-SMessenger* SMessenger::instance_ = nullptr;
+Messenger* Messenger::instance_ = nullptr;

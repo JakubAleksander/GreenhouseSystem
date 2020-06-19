@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setCentralWidget(ui->sectionsManager);
-    SMessenger::createInstance();
+    Messenger::createInstance();
 
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(closeApp()));
     connect(ui->actionLoadSection, SIGNAL(triggered()), this, SLOT(loadSection()));

@@ -8,7 +8,7 @@ void Device::setTopic(QString new_topic){
 void Device::switchOn()
 {
     QString message = "ON";
-    SMessenger::instance()->sendMessage(topic, message);
+    Messenger::instance()->sendMessage(topic, message);
     status = true;
     emit statusChanged(QString("ON"));
 }
@@ -16,7 +16,7 @@ void Device::switchOn()
 void Device::switchOff()
 {
     QString message = "OFF";
-    SMessenger::instance()->sendMessage(topic, message);
+    Messenger::instance()->sendMessage(topic, message);
     status = false;
     emit statusChanged(QString("OFF"));
 }

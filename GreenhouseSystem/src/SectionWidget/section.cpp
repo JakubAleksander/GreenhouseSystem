@@ -13,7 +13,7 @@ Section::Section(Parameters& parameters, QWidget *parent) :
 
     current_parameter.id = parameters.sectionID;
 
-    connect(SMessenger::instance(), &SMessenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedParameters);
+    connect(Messenger::instance(), &Messenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedParameters);
 }
 
 Section::~Section()
