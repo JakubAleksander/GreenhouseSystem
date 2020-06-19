@@ -19,7 +19,7 @@ public:
     }
 
 public slots:
-    void sendMsgToDevice(QString topic, bool state);
+    void sendMessage(QString topic, QString message);
 
 protected:
     SMessenger(QObject *parent = nullptr);

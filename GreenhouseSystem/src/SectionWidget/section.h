@@ -61,6 +61,7 @@ private:
 
     void setTopicsForNewID(quint8 ID);
     void configUI();
+    void initDevices();
 };
 
 #endif // SECTION_H

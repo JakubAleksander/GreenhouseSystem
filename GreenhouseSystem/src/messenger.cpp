@@ -40,9 +40,8 @@ void SMessenger::slotConnected()
   });
 }
 
-void SMessenger::sendMsgToDevice(QString topic, bool state)
+void SMessenger::sendMessage(QString topic, QString message)
 {
-    QString message = state? "OFF":"ON";
     m_mqttClient->publish(QMqttTopicName(topic), message.toUtf8());
 }
 
