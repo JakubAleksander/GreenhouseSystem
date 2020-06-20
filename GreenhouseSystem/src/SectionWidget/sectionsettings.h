@@ -8,7 +8,7 @@ class SectionSettings;
 }
 
 struct Parameters{
-    int sectionID = 0;
+    quint8 sectionID = 0;
     QString picture_path;
     QString section_name = "Section";
     int temperature_expected = 0;
@@ -23,7 +23,7 @@ class SectionSettings : public QDialog
     Q_OBJECT
 
 public:
-    explicit SectionSettings(QWidget *parent = 0);
+    explicit SectionSettings(QWidget *parent = nullptr);
 
     void setParameters(const Parameters &parameters);
 
