@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QString>
 
-#include "sectionsettings.h"
+#include "settingsdialog.h"
 #include "device.h"
 
 namespace Ui {

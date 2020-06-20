@@ -13,7 +13,7 @@ void SectionsManager::addSection(Section *section)
     addTab(section, section->getSectionName());
 }
 
-bool SectionsManager::loadSection(QString path, Section *section)
+bool SectionsManager::loadSection(const QString& path, Section *section)
 {
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly)){
@@ -28,7 +28,7 @@ bool SectionsManager::loadSection(QString path, Section *section)
     return true;
 }
 
-void SectionsManager::saveSectionToFile(QString path, Section *section)
+void SectionsManager::saveSectionToFile(QString& path, Section *section)
 {
     SectionSettings parameters = section->getParameters();
 

@@ -1,4 +1,4 @@
-#include "sectionsettings.h"
+#include "settingsdialog.h"
 #include "ui_sectionsettings.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent) :

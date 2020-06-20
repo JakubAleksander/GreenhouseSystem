@@ -24,16 +24,15 @@ void MainWindow::addSection()
 {
     SectionSettings parameters;
 
-    SettingsDialog* sectionSettings = new SettingsDialog(this);
-    sectionSettings->setParameters(parameters);
+    SettingsDialog* settingsDialog = new SettingsDialog(this);
+    settingsDialog->setParameters(parameters);
 
-    if(sectionSettings->exec() == QDialog::Accepted){
-        parameters = sectionSettings->downloadParameters();
+    if(settingsDialog->exec() == QDialog::Accepted){
+        parameters = settingsDialog->downloadParameters();
         Section *section = new Section(parameters);
-        //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
         ui->sectionsManager->addSection(section);
     }
-    delete sectionSettings;
+    delete settingsDialog;
 }
 
 void MainWindow::closeApp()
@@ -72,7 +71,6 @@ void MainWindow::loadSection()
         msgBox.exec();
         return;
     }
-    //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
     ui->sectionsManager->addSection(section);
 }
 
