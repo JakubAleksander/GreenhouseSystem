@@ -8,13 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
   m_tm1s = new QTimer(this);
   if (m_tm1s) {
-    connect(m_tm1s, &QTimer::timeout,
-            this,&MainWindow::slotTm1s);
+    connect(m_tm1s, &QTimer::timeout, this,&MainWindow::slotTm1s);
     m_tm1s->setInterval(1000);
   }
-  connect(ui->btnStop, SIGNAL(clicked()),
-          this, SLOT(slotBtnStop()));
-
+  connect(ui->btnStop, SIGNAL(clicked()), this, SLOT(slotBtnStop()));
   m_mqttClient = new MqttClient(this);
 }
 
