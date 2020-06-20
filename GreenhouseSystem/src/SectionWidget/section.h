@@ -13,12 +13,9 @@ class Section;
 
 struct Current_parameters{
     quint8 id;
-    int temperature;
-    int insolation;
-    int humidity;
-    bool pump_status;
-    bool light_status;
-    bool fan_status;
+    quint8 temperature;
+    quint8 insolation;
+    quint8 humidity;
 };
 
 class Section : public QWidget
@@ -26,7 +23,7 @@ class Section : public QWidget
     Q_OBJECT
 
 public:
-    explicit Section(Parameters& parameters, QWidget *parent = 0);
+    explicit Section(Parameters& parameters, QWidget *parent = nullptr);
 
     QString getSectionName(){return parameters.section_name;}
 

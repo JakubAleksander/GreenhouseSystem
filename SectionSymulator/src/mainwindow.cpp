@@ -28,14 +28,10 @@ void MainWindow::slotTm1s()
   qDebug() << Q_FUNC_INFO;
   if (m_mqttClient) {
     m_mqttClient->setParameters(quint8(ui->edId->value()),
-                                ui->edTemp->value(),
-                                ui->edInsolation->value(),
-                                ui->edHumid->value(),
-                                ui->cbPump->isChecked(),
-                                ui->cbLight->isChecked(),
-                                ui->cbFan->isChecked()
+                                quint8(ui->edTemp->value()),
+                                quint8(ui->edInsolation->value()),
+                                quint8(ui->edHumid->value())
                                 );
-
   }
 }
 

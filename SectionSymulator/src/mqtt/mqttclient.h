@@ -5,16 +5,6 @@
 #include <QMqttClient>
 
 
-struct Current_parameter{
-    quint8 id;
-    int temperature;
-    int insolation;
-    int humidity;
-    bool actual_pump_status;
-    bool actual_light_status;
-    bool actual_fan_status;
-};
-
 /*!
  * \brief The MqttClient class
  */
@@ -24,15 +14,7 @@ class MqttClient : public QObject
 
   public:
     explicit MqttClient(QObject *parent = nullptr);
-    void setParameters(
-      quint8 id,
-      int temperature,
-      int insolation,
-      int humidity,
-      bool actual_pump_status,
-      bool actual_light_status,
-      bool actual_fan_status
-    );
+    void setParameters(quint8 id, quint8 temperature, quint8 insolation, quint8 humidity);
 
   signals:
     void signalConnected();
