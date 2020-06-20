@@ -22,9 +22,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::addSection()
 {
-    Parameters parameters;
+    SectionSettings parameters;
 
-    SectionSettings* sectionSettings = new SectionSettings(this);
+    SettingsDialog* sectionSettings = new SettingsDialog(this);
     sectionSettings->setParameters(parameters);
 
     if(sectionSettings->exec() == QDialog::Accepted){
@@ -63,7 +63,7 @@ void MainWindow::loadSection()
     QString filename = QFileDialog::getOpenFileName(this, tr("Choose section file"), tr("Image files(*.section)"));
     if(filename == "") return;
 
-    Parameters parameters;
+    SectionSettings parameters;
     Section *section = new Section(parameters);
     if(!(ui->sectionsManager->loadSection(filename, section))){
         QMessageBox msgBox;

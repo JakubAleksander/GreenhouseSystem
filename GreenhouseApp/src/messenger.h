@@ -35,7 +35,7 @@ private slots:
     void slotConnected();
 
 signals:
-    void signalNewParamsFromGreenhouse(Current_parameters parameters);
+    void signalNewParamsFromGreenhouse(GreenhouseData parameters);
 };
 
 #endif // MESSENGER_H

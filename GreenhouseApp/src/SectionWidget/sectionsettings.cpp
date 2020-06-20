@@ -1,38 +1,38 @@
 #include "sectionsettings.h"
 #include "ui_sectionsettings.h"
 
-SectionSettings::SectionSettings(QWidget *parent) :
+SettingsDialog::SettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SectionSettings)
 {
     ui->setupUi(this);
 }
 
-void SectionSettings::setParameters(const Parameters &parameters)
+void SettingsDialog::setParameters(const SectionSettings &sectionSettings)
 {
-    ui->le_sectionName->setText(parameters.section_name);
-    ui->sb_id->setValue(parameters.sectionID);
-    ui->sb_timeHours->setValue(parameters.time_hours);
-    ui->sb_timeMinutes->setValue(parameters.time_minutes);
-    ui->sb_maxTemp->setValue(parameters.temperature_expected);
-    ui->sb_minHum->setValue(parameters.humidity_expected);
-    ui->sb_minIns->setValue(parameters.insolation_expected);
+    ui->le_sectionName->setText(sectionSettings.section_name);
+    ui->sb_id->setValue(sectionSettings.sectionID);
+    ui->sb_timeHours->setValue(sectionSettings.time_hours);
+    ui->sb_timeMinutes->setValue(sectionSettings.time_minutes);
+    ui->sb_maxTemp->setValue(sectionSettings.temperature_expected);
+    ui->sb_minHum->setValue(sectionSettings.humidity_expected);
+    ui->sb_minIns->setValue(sectionSettings.insolation_expected);
 }
 
-Parameters SectionSettings::downloadParameters() const
+SectionSettings SettingsDialog::downloadParameters() const
 {
-    Parameters parameters;
-    parameters.section_name = ui->le_sectionName->text();
-    parameters.sectionID = ui->sb_id->value();
-    parameters.time_hours = ui->sb_timeHours->value();
-    parameters.time_minutes = ui->sb_timeMinutes->value();
-    parameters.temperature_expected = ui->sb_maxTemp->value();
-    parameters.humidity_expected = ui->sb_minHum->value();
-    parameters.insolation_expected = ui->sb_minIns->value();
-    return parameters;
+    SectionSettings sectionSettings;
+    sectionSettings.section_name = ui->le_sectionName->text();
+    sectionSettings.sectionID = ui->sb_id->value();
+    sectionSettings.time_hours = ui->sb_timeHours->value();
+    sectionSettings.time_minutes = ui->sb_timeMinutes->value();
+    sectionSettings.temperature_expected = ui->sb_maxTemp->value();
+    sectionSettings.humidity_expected = ui->sb_minHum->value();
+    sectionSettings.insolation_expected = ui->sb_minIns->value();
+    return sectionSettings;
 }
 
-SectionSettings::~SectionSettings()
+SettingsDialog::~SettingsDialog()
 {
     delete ui;
 }
