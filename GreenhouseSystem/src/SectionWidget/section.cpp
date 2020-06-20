@@ -41,6 +41,10 @@ void Section::setReseivedParameters(Current_parameters parameters)
     if(this->parameters.sectionID == parameters.id ){
         ui->pb_watering->setValue(parameters.humidity);
         ui->pb_lighting->setValue(parameters.insolation);
+
+        ui->lbl_actualTemp->setText(QString::number(parameters.temperature)+" °C");
+        ui->lbl_actualHumidity->setText(QString::number(parameters.humidity) + " %");
+        ui->lbl_actualInsolation->setText(QString::number(parameters.insolation) + " %");
     }
 }
 
