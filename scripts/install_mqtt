@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git clone https://code.qt.io/qt/qtmqtt.git --branch 5.12
+cd qtmqtt
+mkdir build && cd build
+QT_INSTALL_DIR=$HOME/Qt5.12.3/5.12.3
+QT_QMAKE_DIR=$QT_INSTALL_DIR/gcc_64/bin/
+$QT_QMAKE_DIR/qmake -r ..
+make 
+make install
