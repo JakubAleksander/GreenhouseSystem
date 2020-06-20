@@ -11,7 +11,7 @@ QT       += \
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = GreenhouseSystem
+TARGET = GreenhouseApp
 TEMPLATE = app
 
 UI_DIR += build/ui
@@ -27,16 +27,16 @@ SOURCES += \
         src/main.cpp\
         src/mainwindow.cpp \
         src/SectionWidget/section.cpp \
-        src/SectionWidget/sectionsettings.cpp \
+        src/SectionWidget/settingsdialog.cpp \
         src/digitalclock.cpp \
         src/sectionsmanager.cpp \
         src/messenger.cpp \
         src/SectionWidget/device.cpp
 
 HEADERS  += \
+        src/SectionWidget/settingsdialog.h \
         src/mainwindow.h \
         src/SectionWidget/section.h \
-        src/SectionWidget/sectionsettings.h \
         src/digitalclock.h \
         src/sectionsmanager.h \
         src/messenger.h \

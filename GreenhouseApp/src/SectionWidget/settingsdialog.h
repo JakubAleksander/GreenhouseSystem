@@ -7,7 +7,7 @@ namespace Ui {
 class SectionSettings;
 }
 
-struct Parameters{
+struct SectionSettings{
     quint8 sectionID = 0;
     QString picture_path;
     QString section_name = "Section";
@@ -18,18 +18,18 @@ struct Parameters{
     int time_minutes = 0;
 };
 
-class SectionSettings : public QDialog
+class SettingsDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit SectionSettings(QWidget *parent = nullptr);
+    explicit SettingsDialog(QWidget *parent = nullptr);
 
-    void setParameters(const Parameters &parameters);
+    void setParameters(const SectionSettings &sectionSettings);
 
-    Parameters downloadParameters() const;
+    SectionSettings downloadParameters() const;
 
-    ~SectionSettings();
+    ~SettingsDialog();
 
 private:
     Ui::SectionSettings *ui;

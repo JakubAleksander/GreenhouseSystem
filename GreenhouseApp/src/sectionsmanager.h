@@ -10,11 +10,11 @@
 
 #include "SectionWidget/section.h"
 
-inline QDataStream &operator<<(QDataStream& out, const Parameters& p){
+inline QDataStream &operator<<(QDataStream& out, const SectionSettings& p){
 return out << p.sectionID << p.picture_path << p.section_name << p.temperature_expected
            << p.humidity_expected << p.insolation_expected << p.time_hours << p.time_minutes;
 }
-inline QDataStream &operator>>(QDataStream& in, Parameters& p){
+inline QDataStream &operator>>(QDataStream& in, SectionSettings& p){
 return in >> p.sectionID >> p.picture_path >> p.section_name >> p.temperature_expected
           >> p.humidity_expected >> p.insolation_expected >> p.time_hours >> p.time_minutes;
 }
@@ -22,13 +22,13 @@ return in >> p.sectionID >> p.picture_path >> p.section_name >> p.temperature_ex
 class SectionsManager : public QTabWidget
 {
 public:
-    SectionsManager(QWidget *parent = 0);
+    SectionsManager(QWidget *parent = nullptr);
 
     void addSection(Section *section);
 
-    bool loadSection(QString path, Section *section);
+    bool loadSection(const QString& path, Section *section);
 
-    void saveSectionToFile(QString path, Section *section);
+    void saveSectionToFile(QString& path, Section *section);
 
     void saveAllSectionsToFile(QString path);
 

@@ -2,16 +2,16 @@
 #include "ui_section.h"
 #include "messenger.h"
 
-Section::Section(Parameters& parameters, QWidget *parent) :
+Section::Section(SectionSettings& parameters, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Section), parameters(parameters)
+    ui(new Ui::Section), sectionSettings(parameters)
 {
     ui->setupUi(this);
 
     configUI();
     initDevices();
 
-    current_parameter.id = parameters.sectionID;
+    greenhouseData.id = parameters.sectionID;
 
     connect(Messenger::instance(), &Messenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedParameters);
 }
@@ -26,25 +26,22 @@ Section::~Section()
 
 void Section::on_btn_settings_clicked()
 {
-    SectionSettings* sectionSettings = new SectionSettings(this);
-    sectionSettings->setParameters(parameters);
+    SettingsDialog* settingsDialog = new SettingsDialog(this);
+    settingsDialog->setParameters(sectionSettings);
 
-    if(sectionSettings->exec() == QDialog::Accepted){
-        parameters = sectionSettings->downloadParameters();
-        setTopicsForNewID(parameters.sectionID);
+    if(settingsDialog->exec() == QDialog::Accepted){
+        sectionSettings = settingsDialog->downloadParameters();
+        setTopicsForNewID(sectionSettings.sectionID);
     }
-    delete sectionSettings;
+    delete settingsDialog;
 }
 
-void Section::setReseivedParameters(Current_parameters parameters)
+void Section::setReseivedParameters(const GreenhouseData& data)
 {
-    if(this->parameters.sectionID == parameters.id ){
-        ui->pb_watering->setValue(parameters.humidity);
-        ui->pb_lighting->setValue(parameters.insolation);
-
-        ui->lbl_actualTemp->setText(QString::number(parameters.temperature)+" °C");
-        ui->lbl_actualHumidity->setText(QString::number(parameters.humidity) + " %");
-        ui->lbl_actualInsolation->setText(QString::number(parameters.insolation) + " %");
+    if(sectionSettings.sectionID == data.id ){
+        ui->lbl_actualTemp->setText(QString::number(data.temperature)+" °C");
+        ui->lbl_actualHumidity->setText(QString::number(data.humidity) + " %");
+        ui->lbl_actualInsolation->setText(QString::number(data.insolation) + " %");
     }
 }
 
@@ -57,21 +54,21 @@ void Section::setTopicsForNewID(quint8 ID)
 
 void Section::configUI()
 {
-    ui->btn_lighting->setIcon(QIcon(":/Icons/bulb-off.svg"));
+    ui->btn_lighting->setIcon(QIcon(":/Icons/section_lighting_off.svg"));
     ui->btn_lighting->setCheckable(true);
 
-    ui->btn_watering->setIcon(QIcon(":/Icons/droplet.svg"));
+    ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_off.svg"));
     ui->btn_watering->setCheckable(true);
 
-    ui->btn_fan->setIcon(QIcon(":/Icons/file-plus.svg"));
+    ui->btn_fan->setIcon(QIcon(""));
     ui->btn_fan->setCheckable(true);
 }
 
 void Section::initDevices()
 {
-    pump = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/pump/");
-    light = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/light/");
-    fan = new Device(parameters.sectionID, false, "/Section" + QString::number(parameters.sectionID) + "/fan/");
+    pump = new Device(sectionSettings.sectionID, false, "/Section" + QString::number(sectionSettings.sectionID) + "/pump/");
+    light = new Device(sectionSettings.sectionID, false, "/Section" + QString::number(sectionSettings.sectionID) + "/light/");
+    fan = new Device(sectionSettings.sectionID, false, "/Section" + QString::number(sectionSettings.sectionID) + "/fan/");
 
     connect(pump, &Device::statusChanged, ui->lbl_pumpStatus, &QLabel::setText);
     connect(light, &Device::statusChanged, ui->lbl_lightStatus, &QLabel::setText);

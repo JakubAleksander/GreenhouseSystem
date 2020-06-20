@@ -22,18 +22,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::addSection()
 {
-    Parameters parameters;
+    SectionSettings parameters;
 
-    SectionSettings* sectionSettings = new SectionSettings(this);
-    sectionSettings->setParameters(parameters);
+    SettingsDialog* settingsDialog = new SettingsDialog(this);
+    settingsDialog->setParameters(parameters);
 
-    if(sectionSettings->exec() == QDialog::Accepted){
-        parameters = sectionSettings->downloadParameters();
+    if(settingsDialog->exec() == QDialog::Accepted){
+        parameters = settingsDialog->downloadParameters();
         Section *section = new Section(parameters);
-        //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
         ui->sectionsManager->addSection(section);
     }
-    delete sectionSettings;
+    delete settingsDialog;
 }
 
 void MainWindow::closeApp()
@@ -63,7 +62,7 @@ void MainWindow::loadSection()
     QString filename = QFileDialog::getOpenFileName(this, tr("Choose section file"), tr("Image files(*.section)"));
     if(filename == "") return;
 
-    Parameters parameters;
+    SectionSettings parameters;
     Section *section = new Section(parameters);
     if(!(ui->sectionsManager->loadSection(filename, section))){
         QMessageBox msgBox;
@@ -72,7 +71,6 @@ void MainWindow::loadSection()
         msgBox.exec();
         return;
     }
-    //connect(section, &Section::requestSwitchDevice, messenger, &Messenger::sendMsgToDevice);
     ui->sectionsManager->addSection(section);
 }
 

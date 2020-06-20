@@ -2,7 +2,7 @@
 #include <QDateTime>
 #include <QDebug>
 
-#include "../../../GreenhouseSystem/src/SectionWidget/section.h"
+#include "../../../GreenhouseApp/src/SectionWidget/section.h"
 
 MqttClient::MqttClient(QObject *parent) : QObject(parent)
 {
@@ -26,14 +26,14 @@ MqttClient::MqttClient(QObject *parent) : QObject(parent)
 void MqttClient::setParameters(quint8 id, quint8 temperature, quint8 insolation, quint8 humidity)
 {
   if (m_mqttClient) {
-    Current_parameters param;
-    param.id = id;
-    param.temperature = temperature;
-    param.insolation = insolation;
-    param.humidity = humidity;
+    GreenhouseData greenhouseData;
+    greenhouseData.id = id;
+    greenhouseData.temperature = temperature;
+    greenhouseData.insolation = insolation;
+    greenhouseData.humidity = humidity;
 
     m_mqttClient->publish(QMqttTopicName("/Greenhouse/data/"),
-                          QByteArray(reinterpret_cast<char *>(&param), sizeof(param)));
+                          QByteArray(reinterpret_cast<char *>(&greenhouseData), sizeof(greenhouseData)));
   }
 }
 

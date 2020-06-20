@@ -26,21 +26,15 @@ void Messenger::slotConnected()
   auto sub = m_mqttClient->subscribe(QMqttTopicFilter("/Greenhouse/data/"), 0);
 
   m_mqttClient->connect(sub, &QMqttSubscription::messageReceived, [this](const QMqttMessage &message) {
-    if (message.payload().size() == sizeof(Current_parameters)) {
-      Current_parameters param;
-      memcpy(&param,&message.payload().data()[0],sizeof(param));
-      qDebug() << Q_FUNC_INFO;
-      qDebug() << "        id :" << param.id;
-      qDebug() << "      Temp :" << param.temperature;
-      qDebug() << "Insolation :" << param.insolation;
-      qDebug() << "  Humidity :" << param.humidity;
-      qDebug() << "\n";
-      emit signalNewParamsFromGreenhouse(param);
+    if (message.payload().size() == sizeof(GreenhouseData)) {
+      GreenhouseData greenhouseData;
+      memcpy(&greenhouseData,&message.payload().data()[0],sizeof(greenhouseData));
+      emit signalNewParamsFromGreenhouse(greenhouseData);
     }
   });
 }
 
-void Messenger::sendMessage(QString topic, QString message)
+void Messenger::sendMessage(const QString& topic, const QString& message)
 {
     m_mqttClient->publish(QMqttTopicName(topic), message.toUtf8());
 }
