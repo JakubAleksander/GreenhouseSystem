@@ -36,12 +36,9 @@ void Section::on_btn_settings_clicked()
     delete settingsDialog;
 }
 
-void Section::setReseivedParameters(GreenhouseData data)
+void Section::setReseivedParameters(const GreenhouseData& data)
 {
-    if(this->sectionSettings.sectionID == data.id ){
-        ui->pb_watering->setValue(data.humidity);
-        ui->pb_lighting->setValue(data.insolation);
-
+    if(sectionSettings.sectionID == data.id ){
         ui->lbl_actualTemp->setText(QString::number(data.temperature)+" °C");
         ui->lbl_actualHumidity->setText(QString::number(data.humidity) + " %");
         ui->lbl_actualInsolation->setText(QString::number(data.insolation) + " %");
@@ -57,13 +54,13 @@ void Section::setTopicsForNewID(quint8 ID)
 
 void Section::configUI()
 {
-    ui->btn_lighting->setIcon(QIcon(":/Icons/bulb-off.svg"));
+    ui->btn_lighting->setIcon(QIcon(":/Icons/section_lighting_off.svg"));
     ui->btn_lighting->setCheckable(true);
 
-    ui->btn_watering->setIcon(QIcon(":/Icons/droplet.svg"));
+    ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_off.svg"));
     ui->btn_watering->setCheckable(true);
 
-    ui->btn_fan->setIcon(QIcon(":/Icons/file-plus.svg"));
+    ui->btn_fan->setIcon(QIcon(""));
     ui->btn_fan->setCheckable(true);
 }
 

@@ -19,7 +19,7 @@ public:
     }
 
 public slots:
-    void sendMessage(QString topic, QString message);
+    void sendMessage(const QString& topic, const QString& message);
 
 protected:
     Messenger(QObject *parent = nullptr);
@@ -35,7 +35,7 @@ private slots:
     void slotConnected();
 
 signals:
-    void signalNewParamsFromGreenhouse(GreenhouseData parameters);
+    void signalNewParamsFromGreenhouse(const GreenhouseData& parameters);
 };
 
 #endif // MESSENGER_H

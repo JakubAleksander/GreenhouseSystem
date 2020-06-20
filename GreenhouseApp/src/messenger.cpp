@@ -34,7 +34,7 @@ void Messenger::slotConnected()
   });
 }
 
-void Messenger::sendMessage(QString topic, QString message)
+void Messenger::sendMessage(const QString& topic, const QString& message)
 {
     m_mqttClient->publish(QMqttTopicName(topic), message.toUtf8());
 }

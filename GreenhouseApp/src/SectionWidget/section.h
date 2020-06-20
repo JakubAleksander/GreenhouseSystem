@@ -29,7 +29,7 @@ public:
 
     SectionSettings getParameters(){return sectionSettings;}
 
-    void loadParameters(SectionSettings& p){sectionSettings = p;}
+    void loadParameters(SectionSettings& newSettings){sectionSettings = newSettings;}
 
     ~Section();
 
@@ -43,10 +43,10 @@ private slots:
     void on_btn_fan_toggled(bool checked);
 
 public slots:
-    void setReseivedParameters(GreenhouseData data);
+    void setReseivedParameters(const GreenhouseData& data);
 
 signals:
-    void requestSwitchDevice(QString topic, bool state);
+    void requestSwitchDevice(const QString& topic, const bool state);
 
 private:
     Ui::Section *ui;
