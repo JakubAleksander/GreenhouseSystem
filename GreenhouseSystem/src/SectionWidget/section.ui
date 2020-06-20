@@ -88,11 +88,6 @@
            <property name="text">
             <string/>
            </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/Icons/file-plus.svg</normaloff>
-             <normalon>:/Icons/droplet.svg</normalon>:/Icons/file-plus.svg</iconset>
-           </property>
            <property name="iconSize">
             <size>
              <width>35</width>
@@ -144,7 +139,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Fan</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -153,7 +148,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
-          <widget class="QPushButton" name="btn_watering_3">
+          <widget class="QPushButton" name="btn_save">
            <property name="minimumSize">
             <size>
              <width>50</width>
@@ -167,7 +162,17 @@
             </size>
            </property>
            <property name="text">
-            <string>O</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/Icons/section_save.svg</normaloff>:/Icons/section_save.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>35</width>
+             <height>35</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -190,7 +195,7 @@
            </property>
            <property name="icon">
             <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/Icons/settings.svg</normaloff>:/Icons/settings.svg</iconset>
+             <normaloff>:/Icons/section_settings.svg</normaloff>:/Icons/section_settings.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -219,7 +224,7 @@
            </property>
            <property name="icon">
             <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/Icons/trash.svg</normaloff>:/Icons/trash.svg</iconset>
+             <normaloff>:/Icons/section_delate.svg</normaloff>:/Icons/section_delate.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -247,19 +252,6 @@
       </spacer>
      </item>
      <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>100</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -281,7 +273,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../../resources/resources.qrc">:/Icons/temperature.svg</pixmap>
+            <pixmap resource="../../resources/resources.qrc">:/Icons/section_temperature.svg</pixmap>
            </property>
           </widget>
          </item>
@@ -291,7 +283,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../../resources/resources.qrc">:/Icons/droplet.svg</pixmap>
+            <pixmap resource="../../resources/resources.qrc">:/Icons/section_watering.svg</pixmap>
            </property>
           </widget>
          </item>
@@ -301,7 +293,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../../resources/resources.qrc">:/Icons/brightness-up.svg</pixmap>
+            <pixmap resource="../../resources/resources.qrc">:/Icons/section_lighting.svg</pixmap>
            </property>
           </widget>
          </item>
@@ -338,7 +330,7 @@
               <widget class="QLabel" name="lbl_actualTemp">
                <property name="minimumSize">
                 <size>
-                 <width>20</width>
+                 <width>50</width>
                  <height>0</height>
                 </size>
                </property>
@@ -357,7 +349,7 @@
               <widget class="QLabel" name="lbl_actualHumidity">
                <property name="minimumSize">
                 <size>
-                 <width>30</width>
+                 <width>50</width>
                  <height>0</height>
                 </size>
                </property>
@@ -376,7 +368,7 @@
               <widget class="QLabel" name="lbl_actualInsolation">
                <property name="minimumSize">
                 <size>
-                 <width>30</width>
+                 <width>50</width>
                  <height>0</height>
                 </size>
                </property>
@@ -388,31 +380,6 @@
                </property>
                <property name="text">
                 <string>ND</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <item>
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>C</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_14">
-               <property name="text">
-                <string>%</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_15">
-               <property name="text">
-                <string>%</string>
                </property>
               </widget>
              </item>
@@ -456,7 +423,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>10</y>
      <width>311</width>
      <height>191</height>
     </rect>
