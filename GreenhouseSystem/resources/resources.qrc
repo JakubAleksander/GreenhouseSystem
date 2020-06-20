@@ -12,5 +12,21 @@
         <file>Icons/notes.svg</file>
         <file>Icons/trash.svg</file>
         <file>Icons/brightness-up.svg</file>
+        <file>Icons/toolbar_settings.svg</file>
+        <file>Icons/toolbar_load_section.svg</file>
+        <file>Icons/toolbar_new_section.svg</file>
+        <file>Icons/toolbar_power_off.svg</file>
+        <file>Icons/toolbar_raport.svg</file>
+        <file>Icons/toolbar_refresh_connection.svg</file>
+        <file>Icons/section_delate.svg</file>
+        <file>Icons/section_lighting_off.svg</file>
+        <file>Icons/section_lighting_on.svg</file>
+        <file>Icons/section_save.svg</file>
+        <file>Icons/section_settings.svg</file>
+        <file>Icons/section_watering_on.svg</file>
+        <file>Icons/section_watering_off.svg</file>
+        <file>Icons/section_lighting.svg</file>
+        <file>Icons/section_watering.svg</file>
+        <file>Icons/section_temperature.svg</file>
     </qresource>
 </RCC>

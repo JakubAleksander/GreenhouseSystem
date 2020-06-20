@@ -81,10 +81,10 @@ void Section::initDevices()
 void Section::on_btn_lighting_toggled(bool checked)
 {
     if(checked){
-        ui->btn_lighting->setIcon(QIcon(":/Icons/bulb.svg"));
+        ui->btn_lighting->setIcon(QIcon(":/Icons/section_lighting_on.svg"));
         light->switchOn();
     }else{
-        ui->btn_lighting->setIcon(QIcon(":/Icons/bulb-off.svg"));
+        ui->btn_lighting->setIcon(QIcon(":/Icons/section_lighting_off.svg"));
         light->switchOff();
     }
 }
@@ -92,10 +92,10 @@ void Section::on_btn_lighting_toggled(bool checked)
 void Section::on_btn_watering_toggled(bool checked)
 {
     if(checked){
-        ui->btn_watering->setIcon(QIcon(":/Icons/power.svg"));
+        ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_on.svg"));
         pump->switchOn();
     }else{
-        ui->btn_watering->setIcon(QIcon(":/Icons/droplet.svg"));
+        ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_off.svg"));
         pump->switchOff();
     }
 }

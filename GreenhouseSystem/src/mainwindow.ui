@@ -46,7 +46,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -68,7 +68,7 @@
   <action name="actionExit">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/Icons/power.svg</normaloff>:/Icons/power.svg</iconset>
+     <normaloff>:/Icons/toolbar_power_off.svg</normaloff>:/Icons/toolbar_power_off.svg</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -77,7 +77,7 @@
   <action name="actionAddSection">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/Icons/new-section.svg</normaloff>:/Icons/new-section.svg</iconset>
+     <normaloff>:/Icons/toolbar_new_section.svg</normaloff>:/Icons/toolbar_new_section.svg</iconset>
    </property>
    <property name="text">
     <string>Add Section</string>
@@ -86,7 +86,7 @@
   <action name="actionLoadSection">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/Icons/file-plus.svg</normaloff>:/Icons/file-plus.svg</iconset>
+     <normaloff>:/Icons/toolbar_load_section.svg</normaloff>:/Icons/toolbar_load_section.svg</iconset>
    </property>
    <property name="text">
     <string>Load Section</string>
@@ -95,7 +95,7 @@
   <action name="actionSettings">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/Icons/settings.svg</normaloff>:/Icons/settings.svg</iconset>
+     <normaloff>:/Icons/toolbar_settings.svg</normaloff>:/Icons/toolbar_settings.svg</iconset>
    </property>
    <property name="text">
     <string>Settings</string>
@@ -104,7 +104,7 @@
   <action name="actionGetRaport">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/Icons/notes.svg</normaloff>:/Icons/notes.svg</iconset>
+     <normaloff>:/Icons/toolbar_raport.svg</normaloff>:/Icons/toolbar_raport.svg</iconset>
    </property>
    <property name="text">
     <string>Get Raport</string>
@@ -113,7 +113,7 @@
   <action name="actionReloadConnection">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/Icons/refresh.svg</normaloff>:/Icons/refresh.svg</iconset>
+     <normaloff>:/Icons/toolbar_refresh_connection.svg</normaloff>:/Icons/toolbar_refresh_connection.svg</iconset>
    </property>
    <property name="text">
     <string>Reload Connection</string>
