@@ -5,8 +5,8 @@
 #include <QDebug>
 #include <QMap>
 #include <QFile>
-#include "QMessageBox"
-#include "QDataStream"
+#include <QMessageBox>
+#include <QDataStream>
 
 #include "SectionWidget/section.h"
 

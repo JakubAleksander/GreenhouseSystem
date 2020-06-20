@@ -2,6 +2,7 @@
 #define SECTIONSETTINGS_H
 
 #include <QDialog>
+#include <QFileDialog>
 
 namespace Ui {
 class SectionSettings;
@@ -9,8 +10,8 @@ class SectionSettings;
 
 struct SectionSettings{
     quint8 sectionID = 0;
-    QString picture_path;
     QString section_name = "Section";
+    QString picture_path;
     int temperature_expected = 0;
     int humidity_expected = 0;
     int insolation_expected = 0;
@@ -30,6 +31,9 @@ public:
     SectionSettings downloadParameters() const;
 
     ~SettingsDialog();
+
+private slots:
+    void on_toolButton_clicked();
 
 private:
     Ui::SectionSettings *ui;
