@@ -31,6 +31,8 @@ public:
 
     void loadParameters(SectionSettings& newSettings){sectionSettings = newSettings;}
 
+    void setPicture(const QString& path);
+
     ~Section();
 
 private slots:

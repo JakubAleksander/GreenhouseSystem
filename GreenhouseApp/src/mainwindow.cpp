@@ -22,15 +22,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::addSection()
 {
-    SectionSettings parameters;
+    SectionSettings sectionSettings;
 
     SettingsDialog* settingsDialog = new SettingsDialog(this);
-    settingsDialog->setParameters(parameters);
+    settingsDialog->setParameters(sectionSettings);
 
     if(settingsDialog->exec() == QDialog::Accepted){
-        parameters = settingsDialog->downloadParameters();
-        Section *section = new Section(parameters);
+        sectionSettings = settingsDialog->downloadParameters();
+        Section *section = new Section(sectionSettings);
         ui->sectionsManager->addSection(section);
+        section->setPicture(sectionSettings.picture_path);
     }
     delete settingsDialog;
 }

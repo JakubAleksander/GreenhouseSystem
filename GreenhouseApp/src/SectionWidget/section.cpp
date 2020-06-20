@@ -16,6 +16,14 @@ Section::Section(SectionSettings& parameters, QWidget *parent) :
     connect(Messenger::instance(), &Messenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedParameters);
 }
 
+void Section::setPicture(const QString &path)
+{
+    QPixmap picture(path);
+    int labelWidth=(ui->lbl_picture->width());
+    int labelHeight=(ui->lbl_picture->height());
+    ui->lbl_picture->setPixmap(picture.scaled(labelWidth, labelHeight, Qt::KeepAspectRatio));
+}
+
 Section::~Section()
 {
     delete ui;
@@ -32,6 +40,7 @@ void Section::on_btn_settings_clicked()
     if(settingsDialog->exec() == QDialog::Accepted){
         sectionSettings = settingsDialog->downloadParameters();
         setTopicsForNewID(sectionSettings.sectionID);
+        setPicture(sectionSettings.picture_path);
     }
     delete settingsDialog;
 }
