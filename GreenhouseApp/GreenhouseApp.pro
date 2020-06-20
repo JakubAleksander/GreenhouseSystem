@@ -11,7 +11,7 @@ QT       += \
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = GreenhouseSystem
+TARGET = GreenhouseApp
 TEMPLATE = app
 
 UI_DIR += build/ui
