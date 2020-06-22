@@ -2,6 +2,7 @@
 #define MESSENGER_H
 
 #include <QMqttClient>
+#include <QDateTime>
 
 #include "SectionWidget/section.h"
 
