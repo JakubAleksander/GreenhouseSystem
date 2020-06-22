@@ -4,13 +4,14 @@
 #include <QtTest>
 #include <QCoreApplication>
 
+#include "../../GreenhouseApp/src/SectionWidget/section.h"
+
 class TestSection : public QObject
 {
     Q_OBJECT
 
 private slots:
-    void test_case1();
-
+    void testConstructor();
 };
 
 #endif // TESTSECTION_H

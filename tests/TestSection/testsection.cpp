@@ -1,6 +1,6 @@
 #include "testsection.h"
 
-void TestSection::test_case1()
+void TestSection::testConstructor()
 {
 
 }
