@@ -1,6 +1,6 @@
 #include "section.h"
 #include "ui_section.h"
-#include "messenger.h"
+#include "../messenger.h"
 
 Section::Section(SectionSettings& parameters, QWidget *parent) :
     QWidget(parent),

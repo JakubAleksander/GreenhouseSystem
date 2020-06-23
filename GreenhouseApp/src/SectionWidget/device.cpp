@@ -1,5 +1,5 @@
 #include "device.h"
-#include "messenger.h"
+#include "../messenger.h"
 
 void Device::setTopic(QString new_topic){
     topic = new_topic;
