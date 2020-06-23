@@ -6,7 +6,11 @@ QT += core
 
 CONFIG += qt warn_on depend_includepath testcase
 
+TARGET = TestGreenhouseApp
+
 TEMPLATE = app
+
+GREENHOUSE_APP_PATH = "../../GreenhouseApp/src"
 
 SOURCES += \ 
     testsection.cpp \
@@ -19,7 +23,7 @@ HEADERS += \
     ../../GreenhouseApp/src/SectionWidget/section.h \
     ../../GreenhouseApp/src/SectionWidget/device.h \
     ../../GreenhouseApp/src/SectionWidget/settingsdialog.h \
-    ../../GreenhouseApp/src/messenger.h \
+    ../../GreenhouseApp/src/messenger.h
 
 FORMS += \
     ../../GreenhouseApp/src/SectionWidget/section.ui \

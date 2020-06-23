@@ -7,14 +7,13 @@
 #include <QMqttClient>
 
 #include "../../GreenhouseApp/src/SectionWidget/section.h"
-#include "../../GreenhouseApp/src/messenger.h"
 
 class TestSection : public QObject
 {
     Q_OBJECT
 
 private slots:
-    void testConstructor();
+    void testSectionConstructor();
 };
 
 #endif // TESTSECTION_H
