@@ -1,8 +1,8 @@
-QT += testlib
-QT += gui
-QT += widgets
-QT += mqtt
-QT += core
+QT += testlib\
+    gui\
+    widgets\
+    mqtt\
+    core
 
 CONFIG += qt warn_on depend_includepath testcase
 
@@ -10,21 +10,21 @@ TARGET = TestGreenhouseApp
 
 TEMPLATE = app
 
-GREENHOUSE_APP_PATH = "../../GreenhouseApp/src"
+GREENHOUSEAPP_PATH = ../../GreenhouseApp/src
 
 SOURCES += \ 
     testsection.cpp \
-    ../../GreenhouseApp/src/SectionWidget/section.cpp \
-    ../../GreenhouseApp/src/SectionWidget/device.cpp \
-    ../../GreenhouseApp/src/SectionWidget/settingsdialog.cpp \
-    ../../GreenhouseApp/src/messenger.cpp
+    $$GREENHOUSEAPP_PATH/SectionWidget/section.cpp \
+    $$GREENHOUSEAPP_PATH/SectionWidget/device.cpp \
+    $$GREENHOUSEAPP_PATH/SectionWidget/settingsdialog.cpp \
+    $$GREENHOUSEAPP_PATH/messenger.cpp
 HEADERS += \
     testsection.h \
-    ../../GreenhouseApp/src/SectionWidget/section.h \
-    ../../GreenhouseApp/src/SectionWidget/device.h \
-    ../../GreenhouseApp/src/SectionWidget/settingsdialog.h \
-    ../../GreenhouseApp/src/messenger.h
+    $$GREENHOUSEAPP_PATH/SectionWidget/section.h \
+    $$GREENHOUSEAPP_PATH/SectionWidget/device.h \
+    $$GREENHOUSEAPP_PATH/SectionWidget/settingsdialog.h \
+    $$GREENHOUSEAPP_PATH/messenger.h
 
 FORMS += \
-    ../../GreenhouseApp/src/SectionWidget/section.ui \
-    ../../GreenhouseApp/src/SectionWidget/sectionsettings.ui
+    $$GREENHOUSEAPP_PATH/SectionWidget/section.ui \
+    $$GREENHOUSEAPP_PATH/SectionWidget/sectionsettings.ui
