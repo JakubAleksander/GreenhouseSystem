@@ -27,9 +27,9 @@ public:
 
     QString getSectionName(){return sectionSettings.section_name;}
 
-    SectionSettings getParameters(){return sectionSettings;}
+    SectionSettings getSettings(){return sectionSettings;}
 
-    void loadParameters(SectionSettings& newSettings){sectionSettings = newSettings;}
+    void loadSettings(SectionSettings& newSettings){sectionSettings = newSettings;}
 
     void setPicture(const QString& path);
 
@@ -45,7 +45,7 @@ private slots:
     void on_btn_fan_toggled(bool checked);
 
 public slots:
-    void setReseivedParameters(const GreenhouseData& data);
+    void setReseivedGreenhouseData(const GreenhouseData& data);
 
 signals:
     void requestSwitchDevice(const QString& topic, const bool state);

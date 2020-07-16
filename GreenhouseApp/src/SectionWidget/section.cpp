@@ -13,7 +13,7 @@ Section::Section(SectionSettings& parameters, QWidget *parent) :
 
     greenhouseData.id = parameters.sectionID;
 
-    connect(Messenger::instance(), &Messenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedParameters);
+    connect(Messenger::instance(), &Messenger::signalNewParamsFromGreenhouse, this, &Section::setReseivedGreenhouseData);
 }
 
 void Section::setPicture(const QString &path)
@@ -45,7 +45,7 @@ void Section::on_btn_settings_clicked()
     delete settingsDialog;
 }
 
-void Section::setReseivedParameters(const GreenhouseData& data)
+void Section::setReseivedGreenhouseData(const GreenhouseData& data)
 {
     if(sectionSettings.sectionID == data.id ){
         ui->lbl_actualTemp->setText(QString::number(data.temperature)+" °C");

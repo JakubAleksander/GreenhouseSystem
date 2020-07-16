@@ -24,13 +24,13 @@ bool SectionsManager::loadSection(const QString& path, Section *section)
     QDataStream readStream(&file);
     readStream >> parameters;
 
-    section->loadParameters(parameters);
+    section->loadSettings(parameters);
     return true;
 }
 
 void SectionsManager::saveSectionToFile(QString& path, Section *section)
 {
-    SectionSettings parameters = section->getParameters();
+    SectionSettings parameters = section->getSettings();
 
     if(path.back() != '/') path.push_back('/');
     QString filename(path + parameters.section_name + ".section");
