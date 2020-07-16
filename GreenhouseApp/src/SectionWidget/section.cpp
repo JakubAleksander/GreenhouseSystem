@@ -105,7 +105,7 @@ void Section::on_btn_watering_toggled(bool checked)
         ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_on.svg"));
         pump->switchOn();
     }else{
-        ui->btn_watering->setIcon(QIcon(":/Icons/section_ventilation_off.svg"));
+        ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_off.svg"));
         pump->switchOff();
     }
 }
