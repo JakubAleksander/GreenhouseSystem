@@ -69,7 +69,7 @@ void Section::configUI()
     ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_off.svg"));
     ui->btn_watering->setCheckable(true);
 
-    ui->btn_fan->setIcon(QIcon(""));
+    ui->btn_fan->setIcon(QIcon(":/Icons/section_ventilation_off.svg"));
     ui->btn_fan->setCheckable(true);
 }
 
@@ -105,7 +105,7 @@ void Section::on_btn_watering_toggled(bool checked)
         ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_on.svg"));
         pump->switchOn();
     }else{
-        ui->btn_watering->setIcon(QIcon(":/Icons/section_watering_off.svg"));
+        ui->btn_watering->setIcon(QIcon(":/Icons/section_ventilation_off.svg"));
         pump->switchOff();
     }
 }
@@ -113,10 +113,10 @@ void Section::on_btn_watering_toggled(bool checked)
 void Section::on_btn_fan_toggled(bool checked)
 {
     if(checked){
-        ui->btn_fan->setIcon(QIcon(":/Icons/power.svg"));
+        ui->btn_fan->setIcon(QIcon(":/Icons/section_ventilation_on.svg"));
         fan->switchOn();
     }else{
-        ui->btn_fan->setIcon(QIcon(":/Icons/droplet.svg"));
+        ui->btn_fan->setIcon(QIcon(":/Icons/section_ventilation_off.svg"));
         fan->switchOff();
     }
 }

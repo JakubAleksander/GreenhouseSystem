@@ -1,9 +1,12 @@
 # The project is under development!
 
+![](Others/Foto/Presentation2.PNG)
+
+![](Others/Foto/Presentation1.PNG)
+
 # GreenhouseSystem
 
-The project aims to create a scalable and manageable greenhouse control system based on the MQTT protocol. In the system, the user has the ability to manage the sections he defined through a GUI application created using the Qt library
-
+The project aims to create a scalable and manageable greenhouse control system based on the MQTT protocol. In the system, the user has the ability to manage the sections he defined through a GUI application created using the Qt library. The window size is adapted to the standard Raspberry Pi display.
 ![](Others/Foto/Block_scheme.png)
 
 The system uses the MQTT protocol for communication. The diagram below shows the exchange of messages between Section Widget and ESP32.

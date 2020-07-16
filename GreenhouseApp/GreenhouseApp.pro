@@ -50,3 +50,7 @@ FORMS    += \
 RESOURCES += \
         resources/resources.qrc
 
+DISTFILES += \
+    resources/Icons/section_ventilation_off.svg \
+    resources/Icons/section_ventilation_off.svg
+

@@ -16,5 +16,7 @@
         <file>Icons/section_lighting.svg</file>
         <file>Icons/section_watering.svg</file>
         <file>Icons/section_temperature.svg</file>
+        <file>Icons/section_ventilation_on.svg</file>
+        <file>Icons/section_ventilation_off.svg</file>
     </qresource>
 </RCC>
