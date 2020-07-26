@@ -3,6 +3,9 @@
 
 #include <QtCharts/QChart>
 #include <QtCore/QTimer>
+#include <QMargins>
+#include <QFont>
+#include <QBrush>
 
 QT_CHARTS_BEGIN_NAMESPACE
 class QSplineSeries;
@@ -30,6 +33,8 @@ private:
     qreal m_step;
     qreal m_x;
     qreal m_y;
+
+    void visualConfig();
 };
 
 #endif /* CHART_H */

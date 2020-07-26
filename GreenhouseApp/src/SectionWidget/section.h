@@ -3,9 +3,11 @@
 
 #include <QWidget>
 #include <QString>
+#include <QChartView>
 
 #include "settingsdialog.h"
 #include "device.h"
+#include "chart.h"
 
 namespace Ui {
 class Section;
@@ -58,9 +60,17 @@ private:
     Device *light;
     Device *fan;
 
+    QChartView *tempChartView;
+    QChartView *humChartView;
+    QChartView *insChartView;
+    Chart *tempChart;
+    Chart *humChart;
+    Chart *insChart;
+
     void setTopicsForNewID(quint8 ID);
     void configUI();
     void initDevices();
+    void configCharts();
 };
 
 #endif // SECTION_H

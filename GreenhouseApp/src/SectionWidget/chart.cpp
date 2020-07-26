@@ -17,6 +17,8 @@ Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
     QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
     m_timer.setInterval(1000);
 
+    visualConfig();
+
     m_series = new QSplineSeries(this);
     QPen green(Qt::red);
     green.setWidth(3);
@@ -51,4 +53,22 @@ void Chart::handleTimeout()
     scroll(x, 0);
     if (m_x == 100.0)
         m_timer.stop();
+}
+
+void Chart::visualConfig()
+{
+    setMargins(QMargins(0,0,0,0));
+
+    setBackgroundVisible(false);
+    m_axisX->setGridLineVisible(false);
+    m_axisY->setGridLineVisible(false);
+
+    QFont labelsFont;
+    labelsFont.setPixelSize(10);
+    m_axisX->setLabelsFont(labelsFont);
+    m_axisX->setLabelsFont(labelsFont);
+
+    QBrush axisBrush(Qt::white);
+    m_axisX->setLabelsBrush(axisBrush);
+    m_axisY->setLabelsBrush(axisBrush);
 }

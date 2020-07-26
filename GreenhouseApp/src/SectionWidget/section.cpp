@@ -10,6 +10,7 @@ Section::Section(SectionSettings& parameters, QWidget *parent) :
 
     configUI();
     initDevices();
+    configCharts();
 
     greenhouseData.id = parameters.sectionID;
 
@@ -86,6 +87,30 @@ void Section::initDevices()
     pump->switchOff();
     light->switchOff();
     fan->switchOff();
+}
+
+void Section::configCharts()
+{
+    tempChart = new Chart();
+    tempChart->legend()->hide();
+    tempChart->setAnimationOptions(QChart::AllAnimations);
+    tempChartView= new QChartView(tempChart);
+    tempChartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartsManager->addWidget(tempChartView,0,0);
+
+    humChart = new Chart();
+    humChart->legend()->hide();
+    humChart->setAnimationOptions(QChart::AllAnimations);
+    humChartView= new QChartView(humChart);
+    humChartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartsManager->addWidget(humChartView,1,0);
+
+    insChart = new Chart();
+    insChart->legend()->hide();
+    insChart->setAnimationOptions(QChart::AllAnimations);
+    insChartView= new QChartView(insChart);
+    insChartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartsManager->addWidget(insChartView,2,0);
 }
 
 void Section::on_btn_lighting_toggled(bool checked)
