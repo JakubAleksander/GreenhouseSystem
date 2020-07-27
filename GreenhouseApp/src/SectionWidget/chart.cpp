@@ -5,13 +5,13 @@
 #include <QtCore/QRandomGenerator>
 #include <QtCore/QDebug>
 
-Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
+Chart::Chart(const QColor color, const qreal minYRange, const qreal maxYRange, const QString &units, QGraphicsItem *parent, Qt::WindowFlags wFlags):
     QChart(QChart::ChartTypeCartesian, parent, wFlags),
-    m_series(nullptr),
-    m_axisX(new QValueAxis()),
-    m_axisY(new QValueAxis()),
+    series(nullptr),
+    axisX(new QValueAxis()),
+    axisY(new QValueAxis()),
     m_step(0),
-    m_x(5),
+    m_x(9),
     m_y(1)
 {
     QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
@@ -19,21 +19,23 @@ Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
 
     visualConfig();
 
-    m_series = new QSplineSeries(this);
-    QPen green(Qt::red);
+    series = new QSplineSeries(this);
+    QPen green(color);
     green.setWidth(3);
-    m_series->setPen(green);
-    m_series->append(m_x, m_y);
+    series->setPen(green);
+    series->append(m_x, m_y);
 
-    addSeries(m_series);
+    addSeries(series);
 
-    addAxis(m_axisX,Qt::AlignBottom);
-    addAxis(m_axisY,Qt::AlignLeft);
-    m_series->attachAxis(m_axisX);
-    m_series->attachAxis(m_axisY);
-    m_axisX->setTickCount(5);
-    m_axisX->setRange(0, 10);
-    m_axisY->setRange(-5, 10);
+    addAxis(axisX,Qt::AlignBottom);
+    addAxis(axisY,Qt::AlignLeft);
+    series->attachAxis(axisX);
+    series->attachAxis(axisY);
+    axisX->setTickCount(10);
+    axisX->setRange(0, 10);
+    axisY->setRange(minYRange, maxYRange);
+    axisY->setTickCount(5);
+    axisY->setTitleText(units);
 
     m_timer.start();
 }
@@ -45,11 +47,11 @@ Chart::~Chart()
 
 void Chart::handleTimeout()
 {
-    qreal x = plotArea().width() / m_axisX->tickCount();
-    qreal y = (m_axisX->max() - m_axisX->min()) / m_axisX->tickCount();
+    qreal x = plotArea().width() / axisX->tickCount();
+    qreal y = (axisX->max() - axisX->min()) / axisX->tickCount();
     m_x += y;
-    m_y = QRandomGenerator::global()->bounded(5) - 2.5;
-    m_series->append(m_x, m_y);
+    m_y = QRandomGenerator::global()->bounded(10, 50);
+    series->append(m_x, m_y);
     scroll(x, 0);
     if (m_x == 100.0)
         m_timer.stop();
@@ -58,17 +60,19 @@ void Chart::handleTimeout()
 void Chart::visualConfig()
 {
     setMargins(QMargins(0,0,0,0));
+    legend()->hide();
+    setAnimationOptions(QChart::AllAnimations);
 
     setBackgroundVisible(false);
-    m_axisX->setGridLineVisible(false);
-    m_axisY->setGridLineVisible(false);
+    axisX->setGridLineVisible(false);
+    axisY->setGridLineVisible(false);
 
     QFont labelsFont;
     labelsFont.setPixelSize(10);
-    m_axisX->setLabelsFont(labelsFont);
-    m_axisX->setLabelsFont(labelsFont);
+    axisX->setLabelsFont(labelsFont);
+    axisY->setLabelsFont(labelsFont);
 
-    QBrush axisBrush(Qt::white);
-    m_axisX->setLabelsBrush(axisBrush);
-    m_axisY->setLabelsBrush(axisBrush);
+    //QBrush axisBrush(Qt::white);
+    axisX->setLabelsBrush(Qt::white);
+    axisY->setLabelsBrush(Qt::white);
 }

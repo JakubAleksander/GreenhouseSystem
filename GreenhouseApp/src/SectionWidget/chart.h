@@ -18,7 +18,7 @@ class Chart: public QChart
 {
     Q_OBJECT
 public:
-    Chart(QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = nullptr);
+    Chart(const QColor color, const qreal minYRange, const qreal maxYRange, const QString &units, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = nullptr);
     virtual ~Chart();
 
 public slots:
@@ -26,10 +26,10 @@ public slots:
 
 private:
     QTimer m_timer;
-    QSplineSeries *m_series;
+    QSplineSeries *series;
     QStringList m_titles;
-    QValueAxis *m_axisX;
-    QValueAxis *m_axisY;
+    QValueAxis *axisX;
+    QValueAxis *axisY;
     qreal m_step;
     qreal m_x;
     qreal m_y;

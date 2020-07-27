@@ -91,26 +91,20 @@ void Section::initDevices()
 
 void Section::configCharts()
 {
-    tempChart = new Chart();
-    tempChart->legend()->hide();
-    tempChart->setAnimationOptions(QChart::AllAnimations);
+    tempChart = new Chart(Qt::red, 10, 50, "°C");
     tempChartView= new QChartView(tempChart);
     tempChartView->setRenderHint(QPainter::Antialiasing);
-    ui->chartsManager->addWidget(tempChartView,0,0);
+    ui->chartsManager->addWidget(tempChartView, 0, 0);
 
-    humChart = new Chart();
-    humChart->legend()->hide();
-    humChart->setAnimationOptions(QChart::AllAnimations);
+    humChart = new Chart(Qt::blue, 0, 100, "%");
     humChartView= new QChartView(humChart);
     humChartView->setRenderHint(QPainter::Antialiasing);
-    ui->chartsManager->addWidget(humChartView,1,0);
+    ui->chartsManager->addWidget(humChartView, 1, 0);
 
-    insChart = new Chart();
-    insChart->legend()->hide();
-    insChart->setAnimationOptions(QChart::AllAnimations);
+    insChart = new Chart(Qt::yellow, 0, 100, "%");
     insChartView= new QChartView(insChart);
     insChartView->setRenderHint(QPainter::Antialiasing);
-    ui->chartsManager->addWidget(insChartView,2,0);
+    ui->chartsManager->addWidget(insChartView, 2, 0);
 }
 
 void Section::on_btn_lighting_toggled(bool checked)
