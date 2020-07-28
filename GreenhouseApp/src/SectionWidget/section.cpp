@@ -105,6 +105,7 @@ void Section::configCharts()
     insChartView= new QChartView(insChart);
     insChartView->setRenderHint(QPainter::Antialiasing);
     ui->chartsManager->addWidget(insChartView, 2, 0);
+    insChart->setAxisXTitle("last 24 hours");
 }
 
 void Section::on_btn_lighting_toggled(bool checked)

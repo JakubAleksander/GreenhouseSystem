@@ -11,11 +11,11 @@ Chart::Chart(const QColor color, const qreal minYRange, const qreal maxYRange, c
     axisX(new QValueAxis()),
     axisY(new QValueAxis()),
     m_step(0),
-    m_x(9),
-    m_y(1)
+    m_x(24),
+    m_y(0)
 {
     QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
-    m_timer.setInterval(1000);
+    m_timer.setInterval(300);
 
     visualConfig();
 
@@ -27,17 +27,23 @@ Chart::Chart(const QColor color, const qreal minYRange, const qreal maxYRange, c
 
     addSeries(series);
 
-    addAxis(axisX,Qt::AlignBottom);
-    addAxis(axisY,Qt::AlignLeft);
+    addAxis(axisX, Qt::AlignBottom);
+    addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisX);
     series->attachAxis(axisY);
-    axisX->setTickCount(10);
-    axisX->setRange(0, 10);
+    axisX->setTickCount(24);
+    axisX->setRange(0, 24);
+
     axisY->setRange(minYRange, maxYRange);
     axisY->setTickCount(5);
     axisY->setTitleText(units);
 
     m_timer.start();
+}
+
+void Chart::setAxisXTitle(const QString &title)
+{
+    axisX->setTitleText(title);
 }
 
 Chart::~Chart()
@@ -48,13 +54,11 @@ Chart::~Chart()
 void Chart::handleTimeout()
 {
     qreal x = plotArea().width() / axisX->tickCount();
-    qreal y = (axisX->max() - axisX->min()) / axisX->tickCount();
-    m_x += y;
+    //qreal y = (axisX->max() - axisX->min()) / 86400;
+    m_x += 1;
     m_y = QRandomGenerator::global()->bounded(10, 50);
     series->append(m_x, m_y);
     scroll(x, 0);
-    if (m_x == 100.0)
-        m_timer.stop();
 }
 
 void Chart::visualConfig()
@@ -63,16 +67,18 @@ void Chart::visualConfig()
     legend()->hide();
     setAnimationOptions(QChart::AllAnimations);
 
+    setTitleBrush(Qt::white);
+
     setBackgroundVisible(false);
     axisX->setGridLineVisible(false);
-    axisY->setGridLineVisible(false);
+    axisY->setGridLineVisible(true);
+    axisY->setGridLinePen(QColor(55, 45, 20));
 
     QFont labelsFont;
     labelsFont.setPixelSize(10);
     axisX->setLabelsFont(labelsFont);
     axisY->setLabelsFont(labelsFont);
 
-    //QBrush axisBrush(Qt::white);
-    axisX->setLabelsBrush(Qt::white);
+    axisX->setLabelsBrush(QColor(35,35,60));
     axisY->setLabelsBrush(Qt::white);
 }

@@ -19,6 +19,7 @@ class Chart: public QChart
     Q_OBJECT
 public:
     Chart(const QColor color, const qreal minYRange, const qreal maxYRange, const QString &units, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = nullptr);
+    void setAxisXTitle(const QString& title);
     virtual ~Chart();
 
 public slots:
