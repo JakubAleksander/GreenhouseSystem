@@ -22,7 +22,7 @@ public:
           QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = nullptr);
     void addNewValue(const qreal& new_value);
     void setAxisXTitle(const QString& title);
-    virtual ~Chart();
+    ~Chart();
 
 private:
     QSplineSeries *series;
