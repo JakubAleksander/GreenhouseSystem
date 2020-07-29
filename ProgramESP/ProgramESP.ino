@@ -80,7 +80,7 @@ void reconnect() {
   }
 }
 
-GreenhouseData getGreenhouseData() {
+const GreenhouseData getGreenhouseData() {
   thermometer.requestTemperatures();
   float temperature = thermometer.getTempCByIndex(0);
   int humidity = map(analogRead(SENSOR_HUMIDITY), 0, 4095, 0, 100);

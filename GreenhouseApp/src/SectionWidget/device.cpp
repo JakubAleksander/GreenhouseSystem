@@ -1,7 +1,7 @@
 #include "device.h"
 #include "../messenger.h"
 
-void Device::setTopic(QString new_topic){
+void Device::setTopic(const QString& new_topic){
     topic = new_topic;
 }
 

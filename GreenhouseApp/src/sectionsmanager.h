@@ -23,13 +23,9 @@ class SectionsManager : public QTabWidget
 {
 public:
     SectionsManager(QWidget *parent = nullptr);
-
     void addSection(Section *section);
-
     bool loadSection(const QString& path, Section *section);
-
     void saveSectionToFile(QString& path, Section *section);
-
     void saveAllSectionsToFile(QString path);
 
 private:

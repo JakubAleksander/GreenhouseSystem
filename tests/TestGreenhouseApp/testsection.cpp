@@ -5,7 +5,7 @@ void TestSection::testSectionConstructor()
     SectionSettings settings;
     Section section(settings);
 
-    QVERIFY(section.getParameters() == settings);
+    QVERIFY(section.getSettings() == settings);
 }
 
 QTEST_MAIN(TestSection)
