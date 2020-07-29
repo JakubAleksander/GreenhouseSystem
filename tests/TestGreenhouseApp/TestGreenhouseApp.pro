@@ -2,7 +2,8 @@ QT += testlib\
     gui\
     widgets\
     mqtt\
-    core
+    core\
+    charts
 
 CONFIG += qt warn_on depend_includepath testcase
 
@@ -17,12 +18,14 @@ SOURCES += \
     $$GREENHOUSEAPP_PATH/SectionWidget/section.cpp \
     $$GREENHOUSEAPP_PATH/SectionWidget/device.cpp \
     $$GREENHOUSEAPP_PATH/SectionWidget/settingsdialog.cpp \
+    $$GREENHOUSEAPP_PATH/SectionWidget/chart.cpp \
     $$GREENHOUSEAPP_PATH/messenger.cpp
 HEADERS += \
     testsection.h \
     $$GREENHOUSEAPP_PATH/SectionWidget/section.h \
     $$GREENHOUSEAPP_PATH/SectionWidget/device.h \
     $$GREENHOUSEAPP_PATH/SectionWidget/settingsdialog.h \
+    $$GREENHOUSEAPP_PATH/SectionWidget/chart.h \
     $$GREENHOUSEAPP_PATH/messenger.h
 
 FORMS += \
