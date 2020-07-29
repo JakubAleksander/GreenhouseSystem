@@ -7,7 +7,8 @@
 QT       += \
          core gui\
          mqtt\
-         core
+         core \
+         charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,7 +32,8 @@ SOURCES += \
         src/digitalclock.cpp \
         src/sectionsmanager.cpp \
         src/messenger.cpp \
-        src/SectionWidget/device.cpp
+        src/SectionWidget/device.cpp \
+        src/SectionWidget/chart.cpp
 
 HEADERS  += \
         src/SectionWidget/settingsdialog.h \
@@ -40,7 +42,8 @@ HEADERS  += \
         src/digitalclock.h \
         src/sectionsmanager.h \
         src/messenger.h \
-        src/SectionWidget/device.h
+        src/SectionWidget/device.h \
+        src/SectionWidget/chart.h
 
 FORMS    += \
         src/mainwindow.ui \

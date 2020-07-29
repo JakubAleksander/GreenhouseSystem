@@ -17,6 +17,7 @@ struct SectionSettings{
     quint8 insolation_expected;
     quint8 time_hours;
     quint8 time_minutes;
+    int msg_deley; // [s]
 
     SectionSettings(quint8 id = 0,
                     QString name = "Section",
@@ -25,7 +26,8 @@ struct SectionSettings{
                     quint8 hum = 0,
                     quint8 ins = 0,
                     quint8 hours = 0,
-                    quint8 minutes = 0)
+                    quint8 minutes = 0,
+                    int msg_deley = 1)
          :sectionID(id),
           section_name(name),
           picture_path(path),
@@ -33,7 +35,8 @@ struct SectionSettings{
           humidity_expected(hum),
           insolation_expected(ins),
           time_hours(hours),
-          time_minutes(minutes){}
+          time_minutes(minutes),
+          msg_deley(msg_deley){}
 
     bool operator ==(const SectionSettings &s){
         if((this->sectionID == s.sectionID) &&
@@ -43,13 +46,13 @@ struct SectionSettings{
                 (this->humidity_expected == s.humidity_expected) &&
                 (this->insolation_expected == s.insolation_expected) &&
                 (this->time_hours == s.time_hours) &&
-                (this->time_minutes == s.time_minutes)){
+                (this->time_minutes == s.time_minutes) &&
+                (this->msg_deley == s.msg_deley)){
             return true;
         }else{
             return false;
         }
     }
-
 };
 
 class SettingsDialog : public QDialog

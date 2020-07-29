@@ -412,6 +412,17 @@
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>10</y>
+     <width>311</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="chartsManager"/>
+  </widget>
  </widget>
  <resources>
   <include location="../../resources/resources.qrc"/>

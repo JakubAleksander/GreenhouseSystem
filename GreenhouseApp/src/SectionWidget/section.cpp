@@ -10,6 +10,7 @@ Section::Section(SectionSettings& parameters, QWidget *parent) :
 
     configUI();
     initDevices();
+    configCharts();
 
     greenhouseData.id = parameters.sectionID;
 
@@ -51,7 +52,16 @@ void Section::setReseivedGreenhouseData(const GreenhouseData& data)
         ui->lbl_actualTemp->setText(QString::number(data.temperature)+" °C");
         ui->lbl_actualHumidity->setText(QString::number(data.humidity) + " %");
         ui->lbl_actualInsolation->setText(QString::number(data.insolation) + " %");
+
+        //Updating charts once an hour
+        if(msg_counter == 60*60*sectionSettings.msg_deley){
+            tempChart->addNewValue(data.temperature);
+            humChart->addNewValue(data.humidity);
+            insChart->addNewValue(data.insolation);
+            msg_counter = 0;
+        }
     }
+    msg_counter++;
 }
 
 void Section::setTopicsForNewID(quint8 ID)
@@ -86,6 +96,25 @@ void Section::initDevices()
     pump->switchOff();
     light->switchOff();
     fan->switchOff();
+}
+
+void Section::configCharts()
+{
+    tempChart = new Chart(Qt::red, 10, 50, "°C");
+    tempChartView= new QChartView(tempChart);
+    tempChartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartsManager->addWidget(tempChartView, 0, 0);
+
+    humChart = new Chart(Qt::blue, 0, 100, "%");
+    humChartView= new QChartView(humChart);
+    humChartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartsManager->addWidget(humChartView, 1, 0);
+
+    insChart = new Chart(Qt::yellow, 0, 100, "%");
+    insChartView= new QChartView(insChart);
+    insChartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartsManager->addWidget(insChartView, 2, 0);
+    insChart->setAxisXTitle("last 24 hours");
 }
 
 void Section::on_btn_lighting_toggled(bool checked)

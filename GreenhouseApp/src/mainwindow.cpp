@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(ui->sectionsManager);
     Messenger::createInstance();
+    setWindowTitle("Greenhouse Application");
 
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(closeApp()));
     connect(ui->actionLoadSection, SIGNAL(triggered()), this, SLOT(loadSection()));
