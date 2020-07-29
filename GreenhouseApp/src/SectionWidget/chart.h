@@ -18,24 +18,18 @@ class Chart: public QChart
 {
     Q_OBJECT
 public:
-    Chart(const QColor color, const qreal minYRange, const qreal maxYRange, const QString &units, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = nullptr);
+    Chart(const QColor color, const qreal minYRange, const qreal maxYRange, const QString &units,
+          QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = nullptr);
+    void addNewValue(const qreal& new_value);
     void setAxisXTitle(const QString& title);
     virtual ~Chart();
 
-public slots:
-    void handleTimeout();
-
 private:
-    QTimer m_timer;
     QSplineSeries *series;
-    QStringList m_titles;
     QValueAxis *axisX;
     QValueAxis *axisY;
-    qreal m_step;
     qreal m_x;
     qreal m_y;
-
-    void visualConfig();
 };
 
 #endif /* CHART_H */

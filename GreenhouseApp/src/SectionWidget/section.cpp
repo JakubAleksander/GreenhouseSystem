@@ -52,7 +52,16 @@ void Section::setReseivedGreenhouseData(const GreenhouseData& data)
         ui->lbl_actualTemp->setText(QString::number(data.temperature)+" °C");
         ui->lbl_actualHumidity->setText(QString::number(data.humidity) + " %");
         ui->lbl_actualInsolation->setText(QString::number(data.insolation) + " %");
+
+        //Updating charts once an hour
+        if(msg_counter == 60*60*sectionSettings.msg_deley){
+            tempChart->addNewValue(data.temperature);
+            humChart->addNewValue(data.humidity);
+            insChart->addNewValue(data.insolation);
+            msg_counter = 0;
+        }
     }
+    msg_counter++;
 }
 
 void Section::setTopicsForNewID(quint8 ID)

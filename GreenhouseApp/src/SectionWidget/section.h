@@ -67,6 +67,8 @@ private:
     Chart *humChart;
     Chart *insChart;
 
+    int msg_counter = 0;
+
     void setTopicsForNewID(quint8 ID);
     void configUI();
     void initDevices();
