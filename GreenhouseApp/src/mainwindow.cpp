@@ -49,7 +49,7 @@ void MainWindow::closeApp()
 
     if(msgBox.clickedButton() != cancelButton){
         if(msgBox.clickedButton() == saveButton){
-            ui->sectionsManager->saveAllSectionsToFile("/home/jakub/Desktop");
+            ui->sectionsManager->saveAllSectionsToFile(QDir::homePath());
         }
     QApplication::quit();
     }

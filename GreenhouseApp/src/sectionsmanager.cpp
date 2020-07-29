@@ -16,14 +16,12 @@ void SectionsManager::addSection(Section *section)
 bool SectionsManager::loadSection(const QString& path, Section *section)
 {
     QFile file(path);
-    if (!file.open(QIODevice::ReadOnly)){
-        return false;
-    }
-    SectionSettings parameters;
+    if (!file.open(QIODevice::ReadOnly)) return false;
+    if(file.size() != sizeof(SectionSettings)) return false;
 
+    SectionSettings parameters;
     QDataStream readStream(&file);
     readStream >> parameters;
-
     section->loadSettings(parameters);
     return true;
 }
