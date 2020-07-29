@@ -26,24 +26,16 @@ class Section : public QWidget
 
 public:
     explicit Section(SectionSettings& sectionSettings, QWidget *parent = nullptr);
-
-    QString getSectionName(){return sectionSettings.section_name;}
-
-    SectionSettings getSettings(){return sectionSettings;}
-
+    const QString getSectionName(){return sectionSettings.section_name;}
+    const SectionSettings getSettings(){return sectionSettings;}
     void loadSettings(SectionSettings& newSettings){sectionSettings = newSettings;}
-
     void setPicture(const QString& path);
-
     ~Section();
 
 private slots:
     void on_btn_settings_clicked();
-
     void on_btn_lighting_toggled(bool checked);
-
     void on_btn_watering_toggled(bool checked);
-
     void on_btn_fan_toggled(bool checked);
 
 public slots:
@@ -69,7 +61,7 @@ private:
 
     int msg_counter = 0;
 
-    void setTopicsForNewID(quint8 ID);
+    void setTopicsForNewID(const quint8 ID);
     void configUI();
     void initDevices();
     void configCharts();

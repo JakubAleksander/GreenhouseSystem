@@ -11,13 +11,13 @@ public:
         : id(id), status(status), topic(topic){}
 
     bool actualStatus(){return status;}
-    QString getTopic(){return topic;}
-    void setTopic(QString new_topic);
+    const QString getTopic(){return topic;}
+    void setTopic(const QString& new_topic);
     void switchOn();
     void switchOff();
 
 signals:
-    void statusChanged(QString str_status);
+    void statusChanged(const QString& str_status);
 
 private:
     quint8 id;

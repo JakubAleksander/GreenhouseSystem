@@ -64,7 +64,7 @@ void Section::setReseivedGreenhouseData(const GreenhouseData& data)
     msg_counter++;
 }
 
-void Section::setTopicsForNewID(quint8 ID)
+void Section::setTopicsForNewID(const quint8 ID)
 {
     pump->setTopic("/Section" + QString::number(ID) + "/pump/");
     light->setTopic("/Section" + QString::number(ID) + "/light/");
